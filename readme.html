@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Expires" content="Fri, Jan 01 1900 00:00:00 GMT">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Lang" content="en">
+<meta name="author" content="">
+<meta http-equiv="Reply-to" content="info@blueend.com">
+<meta name="description" content="blueend tsung ui">
+<meta name="keywords" content="TSUNG loadtest UI">
+<meta name="creation-date" content="01/01/2009">
+<meta name="revisit-after" content="15 days">
+<title>TSUNG Loadtest UI</title>
+<style>
+body {
+	margin:0;padding:0;
+	background:#eee;
+	font-family: sans-serif;
+}
+div.container {
+	width:700px;
+	margin:20px auto;
+	border-left:1px solid #ddd;
+	border-right:1px solid #ddd;
+	background:white;
+	padding:9px;
+	-webkit-box-shadow: 0px 0px 5px #222;
+  -moz-box-shadow: 0px 0px 5px #222;
+  box-shadow: 0px 0px 5px #222;
+}
+h1{
+	display: Block;
+	background: #C4232D;
+	background-image: url(icon.png);
+	background-position: left top;
+	background-repeat: no-repeat;
+	padding: 20px 0px 40px 150px;
+	margin: -10px;
+	color: white;
+	border-bottom: 1px solid #A4030D;
+}
+code {
+	font-size:12px;
+	background:#eee;
+	border:#ddd;
+	padding:5px;
+	display:block;
+	
+}
+</style>
+</head>
+<body>
+<div class="container">  
+	<h1>TSUNG Loadtest GUI</h1>
+	
+	<h2>What is it?</h2>
+	<p>These scripts represent a GUI interface for the <em>open-source multi-protocol distributed load testing tool <a href="http://tsung.erlang-projects.org/" title="Check out TSUNG here">TSUNG</a></em>. It's not really fancy and the main aim of the script is to be able to start, monitor and manage testruns. It was written by developers working at <a href="http://www.blueend.com">blueend.com</a> to facilitate the needs for easy and fast load tests.</p>
+	
+	<h2>Requirements</h2>
+	<p>You need to have a fully functional tsung setup working. Please refer to the <a href="http://tsung.erlang-projects.org/user_manual.html">TSUNG documentation</a> for the compiling and setup instructions.</p>
+	<p>The script is using PHP/mySQL to keep track of running tests. PHP 5+ should do fine. POSIX commands should be enabled (enabled by default in PHP)</p>
+	<p>Please note that the script is using shellcommands and as such you must consider safe_mode and the safe_mode_exec_dir directive. If you have safe_mode = off, the script should run fine.</p>
+	
+	<h2>Installation</h2>
+  <ol>
+  	<li><p>Copy the contents of the package to a web-accessible location (e.g. /var/www/html/tsungui/)</p></li>
+  	<li><p>Create the 'statusinfo' table with the provided db.sql file or just use this statement:</p><pre><code>CREATE TABLE `statusinfo` (
+  `id` int(11) NOT NULL auto_increment,
+  `status` enum('waiting','running','canceled','finished') default NULL,
+  `template` varchar(255) default NULL,
+  `comment` text,
+  `starttime` varchar(16) default NULL,
+  PRIMARY KEY  (`id`)
+)</code></pre></li>
+<li><p>Adapt the config.inc.php to reflect your settings:</p>
+<pre><code>define('blueendCom_DB_USER',		'your mysql user');
+define('blueendCom_DB_PASS',		'your mysql password');
+define('blueendCom_DB_NAME',		'your database name');
+define('blueendCom_DB_SERVER',	'localhost');
+
+define('blueendCom_PATH_TEMPLATES',dirname(__file__).'/templates/');</code></pre></li>
+
+	<li><p>Add a crontab [<em>crontab -e</em>] for the periodic check on the task queue (adapt paths as needed):</p>
+	<pre><code>* * * * * /usr/bin/php /var/www/html/tsungui/cron.php &gt;&gt; /var/log/tsungui.log 2&gt;&amp;1</code></pre></li>
+  <li><p>Look at the folder <strong>template/example</strong>. You'll find 2 xml files needed by TSUNG for a testrun. Change these as needed:<br>
+  <strong>config.xml</strong> represents the settings of this "example" loadtest<br> 
+  <strong>clickpath.xml</strong> represents the individual clicks on your target system - you can create a clickpath by using the <a href="http://tsung.erlang-projects.org/user_manual.html#htoc34">TSUNG recorder</a></p></li>
+  </ol>
+  
+  <h2>Contact Information</h2>
+  <p>If you have questions/feedback <a href="http://blog.blueend.com/2011/08/tsung-gui/">please leave a comment here</a> </p>
+  
+  <h2>Disclaimer</h2>
+  <p>THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+</div>
+</body>
+</html>

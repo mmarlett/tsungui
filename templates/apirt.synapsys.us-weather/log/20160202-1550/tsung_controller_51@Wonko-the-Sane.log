@@ -1,0 +1,1515 @@
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+    ts_config_server:(5:<0.69.0>) Config server started, logdir is "/Library/WebServer/Documents/tsungui-mdm/templates/apirt.synapsys.us-weather/log/20160202-1550"
+ 
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+              ts_mon:(5:<0.50.0>) starting monitor, global 
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+           ts_config:(5:<0.69.0>) Reading config file: config.xml
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+      ts_config_http:(4:<0.69.0>) Get user agent: 80 "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.8) Gecko/20050513 Galeon/1.3.21" 
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+      ts_config_http:(4:<0.69.0>) Get user agent: 20 "Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4" 
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+           ts_config:(5:<0.69.0>) Session name for id 1 is "http-example"
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+    ts_config_server:(4:<0.69.0>) SYSINFO:Tsung version: 1.6.0
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+    ts_config_server:(4:<0.69.0>) SYSINFO:Erlang version: Erlang/OTP 18 [erts-7.1] [source] [64-bit] [smp:4:4] [async-threads:8] [hipe] [kernel-poll:true] [dtrace]
+
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+    ts_config_server:(4:<0.69.0>) SYSINFO:System architecture x86_64-apple-darwin15.0.0
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+    ts_config_server:(4:<0.69.0>) SYSINFO:Current path: /usr/local/Cellar/tsung/1.6.0/lib/erlang/lib/tsung-1.6.0/ebin/tsung.beam
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+       ts_job_notify:(6:<0.81.0>) No listen port defined, can't open listening socket (don't worry: it's normal if you don't use job notifications) 
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+    ts_os_mon_erlang:(6:<0.90.0>) Running os_mon on the same host as the controller, use the same beam
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+              ts_mon:(5:<0.70.0>) Activate clients with text backend
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+              ts_mon:(5:<0.70.0>) Starting tsung clients on hosts: [localhost]
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+    ts_config_server:(5:<0.69.0>) Start a launcher on the controller beam localhost
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+              ts_sup:(6:<0.118.0>) starting supervisor ...
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+              ts_sup:(6:<0.119.0>) starting
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+          ts_ip_scan:(6:<0.120.0>) Starting 
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+     ts_launcher_mgr:(6:<0.121.0>) starting
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+    ts_session_cache:(6:<0.119.0>) Starting
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+        ts_mon_cache:(6:<0.119.0>) Starting
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+        ts_local_mon:(6:<0.119.0>) Starting
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+    alarm_handler: {set,{system_memory_high_watermark,[]}}
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+       ts_client_sup:(6:<0.125.0>) Starting 
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+  ts_launcher_static:(6:<0.119.0>) starting 
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+         ts_launcher:(6:<0.119.0>) starting 
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+    ts_config_server:(6:<0.69.0>) Application started, activate launcher, 
+
+=WARNING REPORT==== 2-Feb-2016::15:50:14 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+  ts_launcher_static:(6:<0.69.0>) starting on node ['tsung_controller_51@Wonko-the-Sane']
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+         ts_launcher:(6:<0.69.0>) starting on node ['tsung_controller_51@Wonko-the-Sane']
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+  ts_launcher_static:(5:<0.126.0>) Launch msg receive ("localhost")
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+         ts_launcher:(5:<0.127.0>) Launch msg receive ("localhost")
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+     ts_launcher_mgr:(6:<0.121.0>) syncing already done, skip
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+              ts_mon:(6:<0.70.0>) A launcher has started
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+    ts_config_server:(5:<0.69.0>) All remote beams started, syncing 
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+    ts_config_server:(5:<0.69.0>) Undefined ports_range config 
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+    ts_config_server:(5:<0.69.0>) New arrival phase 1 for client "localhost" (last ? true): will start 15 users
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+    ts_config_server:(5:<0.69.0>) New arrival phase 2 for client "localhost" (last ? true): will start 100 users
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+    ts_config_server:(5:<0.69.0>) New arrival phase 3 for client "localhost" (last ? true): will start 100 users
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+  ts_launcher_static:(6:<0.126.0>) No static users, stop
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+  ts_launcher_static:(6:<0.126.0>) launcher terminating for reason normal
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+         ts_launcher:(5:<0.127.0>) Expected duration of first phase: 60.0 sec (15 users) 
+
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+         ts_launcher:(5:<0.127.0>) Can't get file descriptors limit from system, you should verify that 'maxusers' has a good value 
+=INFO REPORT==== 2-Feb-2016::15:50:14 ===
+         ts_launcher:(5:<0.127.0>) Activate launcher (15 users) in 8578 msec 
+
+=INFO REPORT==== 2-Feb-2016::15:50:22 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:50:23 ===
+           ts_client:(6:<0.133.0>) Session ending 
+
+=WARNING REPORT==== 2-Feb-2016::15:50:24 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=INFO REPORT==== 2-Feb-2016::15:50:26 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:50:27 ===
+           ts_client:(6:<0.140.0>) Session ending 
+
+=WARNING REPORT==== 2-Feb-2016::15:50:34 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=INFO REPORT==== 2-Feb-2016::15:50:35 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:50:35 ===
+           ts_client:(6:<0.145.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:50:41 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:50:41 ===
+           ts_client:(6:<0.146.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:50:44 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:50:44 ===
+           ts_client:(6:<0.147.0>) Session ending 
+
+=WARNING REPORT==== 2-Feb-2016::15:50:44 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=INFO REPORT==== 2-Feb-2016::15:50:53 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:50:53 ===
+           ts_client:(6:<0.152.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:50:53 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:50:53 ===
+           ts_client:(6:<0.153.0>) Session ending 
+
+=WARNING REPORT==== 2-Feb-2016::15:50:54 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=INFO REPORT==== 2-Feb-2016::15:50:54 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:50:54 ===
+           ts_client:(6:<0.158.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:50:55 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:50:55 ===
+           ts_client:(6:<0.159.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:50:56 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:50:56 ===
+           ts_client:(6:<0.160.0>) Session ending 
+
+=WARNING REPORT==== 2-Feb-2016::15:51:04 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=INFO REPORT==== 2-Feb-2016::15:51:06 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:06 ===
+           ts_client:(6:<0.165.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:09 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:09 ===
+           ts_client:(6:<0.166.0>) Session ending 
+
+=WARNING REPORT==== 2-Feb-2016::15:51:14 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=INFO REPORT==== 2-Feb-2016::15:51:15 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:15 ===
+           ts_client:(6:<0.173.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:17 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:18 ===
+           ts_client:(6:<0.174.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:21 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:21 ===
+         ts_launcher:(4:<0.127.0>) Need to wait 0.92 sec before changing phase, going to sleep
+
+=INFO REPORT==== 2-Feb-2016::15:51:21 ===
+           ts_client:(6:<0.175.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:22 ===
+         ts_launcher:(5:<0.127.0>) Waking up
+
+=INFO REPORT==== 2-Feb-2016::15:51:22 ===
+         ts_launcher:(5:<0.127.0>) Start a new arrival phase (100 users, 0.001); expected duration=120.0 sec
+
+=INFO REPORT==== 2-Feb-2016::15:51:23 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:23 ===
+           ts_client:(6:<0.176.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:23 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:24 ===
+           ts_client:(6:<0.177.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:24 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:24 ===
+           ts_client:(6:<0.178.0>) Session ending 
+
+=WARNING REPORT==== 2-Feb-2016::15:51:24 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=INFO REPORT==== 2-Feb-2016::15:51:25 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:25 ===
+           ts_client:(6:<0.183.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:26 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:26 ===
+           ts_client:(6:<0.184.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:26 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:26 ===
+           ts_client:(6:<0.185.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:29 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:29 ===
+           ts_client:(6:<0.186.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:30 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:30 ===
+           ts_client:(6:<0.187.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:30 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:30 ===
+           ts_client:(6:<0.188.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:30 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:31 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:31 ===
+           ts_client:(6:<0.189.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:31 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:31 ===
+           ts_client:(6:<0.190.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:31 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:31 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:31 ===
+           ts_client:(6:<0.191.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:31 ===
+           ts_client:(6:<0.192.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:31 ===
+           ts_client:(6:<0.193.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:31 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:31 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:31 ===
+           ts_client:(6:<0.194.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:32 ===
+           ts_client:(6:<0.195.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:32 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:32 ===
+           ts_client:(6:<0.196.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:33 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:33 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:33 ===
+           ts_client:(6:<0.197.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:33 ===
+           ts_client:(6:<0.198.0>) Session ending 
+
+=WARNING REPORT==== 2-Feb-2016::15:51:34 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=INFO REPORT==== 2-Feb-2016::15:51:35 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:35 ===
+           ts_client:(6:<0.203.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:36 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:36 ===
+           ts_client:(6:<0.204.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:36 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:37 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:37 ===
+           ts_client:(6:<0.206.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:37 ===
+           ts_client:(6:<0.205.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:37 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:37 ===
+           ts_client:(6:<0.207.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:38 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:38 ===
+           ts_client:(6:<0.208.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:39 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:39 ===
+           ts_client:(6:<0.209.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:41 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:41 ===
+           ts_client:(6:<0.210.0>) Session ending 
+
+=WARNING REPORT==== 2-Feb-2016::15:51:44 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=INFO REPORT==== 2-Feb-2016::15:51:46 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:46 ===
+           ts_client:(6:<0.215.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:47 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:47 ===
+           ts_client:(6:<0.216.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:48 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:48 ===
+           ts_client:(6:<0.217.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:49 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:49 ===
+           ts_client:(6:<0.218.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:50 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:50 ===
+           ts_client:(6:<0.219.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:53 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:53 ===
+           ts_client:(6:<0.220.0>) Session ending 
+
+=WARNING REPORT==== 2-Feb-2016::15:51:54 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=INFO REPORT==== 2-Feb-2016::15:51:57 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:57 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:57 ===
+           ts_client:(6:<0.225.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:58 ===
+           ts_client:(6:<0.226.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:51:59 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:51:59 ===
+           ts_client:(6:<0.227.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:00 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:00 ===
+           ts_client:(6:<0.228.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:00 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:01 ===
+           ts_client:(6:<0.229.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:01 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:01 ===
+           ts_client:(6:<0.230.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:01 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:01 ===
+           ts_client:(6:<0.231.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:03 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:03 ===
+           ts_client:(6:<0.232.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:04 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:04 ===
+           ts_client:(6:<0.234.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:04 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:04 ===
+           ts_client:(6:<0.235.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:04 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=WARNING REPORT==== 2-Feb-2016::15:52:04 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=INFO REPORT==== 2-Feb-2016::15:52:04 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:04 ===
+           ts_client:(6:<0.236.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:05 ===
+           ts_client:(6:<0.240.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:05 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:05 ===
+           ts_client:(6:<0.241.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:05 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:05 ===
+           ts_client:(6:<0.242.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:06 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:06 ===
+           ts_client:(6:<0.243.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:07 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:07 ===
+           ts_client:(6:<0.244.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:09 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:09 ===
+           ts_client:(6:<0.245.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:10 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:10 ===
+           ts_client:(6:<0.246.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:12 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:12 ===
+           ts_client:(6:<0.247.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:12 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:12 ===
+           ts_client:(6:<0.248.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:12 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:12 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:13 ===
+           ts_client:(6:<0.249.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:13 ===
+           ts_client:(6:<0.250.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:13 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:14 ===
+           ts_client:(6:<0.252.0>) Session ending 
+
+=WARNING REPORT==== 2-Feb-2016::15:52:14 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=INFO REPORT==== 2-Feb-2016::15:52:15 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:15 ===
+           ts_client:(6:<0.259.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:16 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:17 ===
+           ts_client:(6:<0.260.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:21 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:21 ===
+           ts_client:(6:<0.261.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:21 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:22 ===
+           ts_client:(6:<0.262.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:24 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:24 ===
+           ts_client:(6:<0.264.0>) Session ending 
+
+=WARNING REPORT==== 2-Feb-2016::15:52:25 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=INFO REPORT==== 2-Feb-2016::15:52:27 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:27 ===
+           ts_client:(6:<0.268.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:28 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:28 ===
+           ts_client:(6:<0.269.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:28 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:29 ===
+           ts_client:(6:<0.270.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:32 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:33 ===
+           ts_client:(6:<0.271.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:34 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:34 ===
+           ts_client:(6:<0.273.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:34 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:35 ===
+           ts_client:(6:<0.274.0>) Session ending 
+
+=WARNING REPORT==== 2-Feb-2016::15:52:35 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=INFO REPORT==== 2-Feb-2016::15:52:36 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:36 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:36 ===
+           ts_client:(6:<0.278.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:36 ===
+           ts_client:(6:<0.279.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:38 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:38 ===
+           ts_client:(6:<0.280.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:38 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:38 ===
+           ts_client:(6:<0.281.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:40 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:40 ===
+           ts_client:(6:<0.282.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:42 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:42 ===
+           ts_client:(6:<0.283.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:43 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:43 ===
+           ts_client:(6:<0.284.0>) Session ending 
+
+=WARNING REPORT==== 2-Feb-2016::15:52:45 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=INFO REPORT==== 2-Feb-2016::15:52:45 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:45 ===
+           ts_client:(6:<0.289.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:46 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:46 ===
+           ts_client:(6:<0.290.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:46 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:46 ===
+           ts_client:(6:<0.291.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:48 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:48 ===
+           ts_client:(6:<0.292.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:49 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:49 ===
+           ts_client:(6:<0.293.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:49 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:49 ===
+           ts_client:(6:<0.294.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:49 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:49 ===
+           ts_client:(6:<0.295.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:52 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:53 ===
+           ts_client:(6:<0.296.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:53 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:53 ===
+           ts_client:(6:<0.297.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:53 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:54 ===
+           ts_client:(6:<0.298.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:54 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:54 ===
+           ts_client:(6:<0.300.0>) Session ending 
+
+=WARNING REPORT==== 2-Feb-2016::15:52:55 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=INFO REPORT==== 2-Feb-2016::15:52:55 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:55 ===
+           ts_client:(6:<0.304.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:57 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:57 ===
+           ts_client:(6:<0.305.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:58 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:52:58 ===
+           ts_client:(6:<0.306.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:52:59 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:00 ===
+           ts_client:(6:<0.307.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:00 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:00 ===
+           ts_client:(6:<0.308.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:01 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:01 ===
+           ts_client:(6:<0.309.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:01 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:01 ===
+           ts_client:(6:<0.310.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:03 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:03 ===
+           ts_client:(6:<0.311.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:04 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:04 ===
+           ts_client:(6:<0.313.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:05 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:05 ===
+           ts_client:(6:<0.314.0>) Session ending 
+
+=WARNING REPORT==== 2-Feb-2016::15:53:05 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=INFO REPORT==== 2-Feb-2016::15:53:05 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:05 ===
+           ts_client:(6:<0.318.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:06 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:07 ===
+           ts_client:(6:<0.319.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:07 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:07 ===
+           ts_client:(6:<0.320.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:08 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:08 ===
+           ts_client:(6:<0.321.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:09 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:09 ===
+         ts_launcher:(4:<0.127.0>) Need to wait 12.382 sec before changing phase, going to sleep
+
+=INFO REPORT==== 2-Feb-2016::15:53:09 ===
+           ts_client:(6:<0.322.0>) Session ending 
+
+=WARNING REPORT==== 2-Feb-2016::15:53:15 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=INFO REPORT==== 2-Feb-2016::15:53:22 ===
+         ts_launcher:(5:<0.127.0>) Waking up
+
+=INFO REPORT==== 2-Feb-2016::15:53:22 ===
+         ts_launcher:(5:<0.127.0>) Start a new arrival phase (100 users, 0.01); expected duration=120.0 sec
+
+=INFO REPORT==== 2-Feb-2016::15:53:24 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:24 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:24 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:24 ===
+           ts_client:(6:<0.330.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:24 ===
+           ts_client:(6:<0.331.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:24 ===
+           ts_client:(6:<0.332.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:24 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:25 ===
+           ts_client:(6:<0.333.0>) Session ending 
+
+=WARNING REPORT==== 2-Feb-2016::15:53:25 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=INFO REPORT==== 2-Feb-2016::15:53:25 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:25 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:25 ===
+           ts_client:(6:<0.337.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:25 ===
+           ts_client:(6:<0.338.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:25 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:25 ===
+           ts_client:(6:<0.339.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:25 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:25 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:25 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:25 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:25 ===
+           ts_client:(6:<0.341.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:25 ===
+           ts_client:(6:<0.340.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:26 ===
+           ts_client:(6:<0.342.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:26 ===
+           ts_client:(6:<0.343.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:26 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:26 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:26 ===
+           ts_client:(6:<0.344.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:26 ===
+           ts_client:(6:<0.345.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:26 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:26 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:26 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:26 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:26 ===
+           ts_client:(6:<0.347.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:26 ===
+           ts_client:(6:<0.346.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:26 ===
+           ts_client:(6:<0.348.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:26 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:26 ===
+           ts_client:(6:<0.349.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:27 ===
+           ts_client:(6:<0.350.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:27 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:27 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:27 ===
+           ts_client:(6:<0.351.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:27 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:27 ===
+           ts_client:(6:<0.352.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:27 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:27 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:27 ===
+           ts_client:(6:<0.353.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:27 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:27 ===
+           ts_client:(6:<0.354.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:27 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:27 ===
+           ts_client:(6:<0.355.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:27 ===
+           ts_client:(6:<0.356.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:27 ===
+           ts_client:(6:<0.357.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:27 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:27 ===
+           ts_client:(6:<0.358.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:27 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:27 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:27 ===
+           ts_client:(6:<0.359.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:27 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:27 ===
+           ts_client:(6:<0.360.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:28 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:28 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:28 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:28 ===
+           ts_client:(6:<0.361.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:28 ===
+           ts_client:(6:<0.362.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:28 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:28 ===
+           ts_client:(6:<0.363.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:28 ===
+           ts_client:(6:<0.364.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:28 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:28 ===
+           ts_client:(6:<0.365.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:28 ===
+           ts_client:(6:<0.366.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:28 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:28 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:28 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:28 ===
+           ts_client:(6:<0.367.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:28 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:28 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:28 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:28 ===
+           ts_client:(6:<0.368.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:28 ===
+           ts_client:(6:<0.369.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:28 ===
+           ts_client:(6:<0.371.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:28 ===
+           ts_client:(6:<0.372.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:28 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:28 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:28 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:29 ===
+           ts_client:(6:<0.373.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:29 ===
+           ts_client:(6:<0.374.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:29 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:29 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:29 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:29 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:29 ===
+           ts_client:(6:<0.376.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:29 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:29 ===
+           ts_client:(6:<0.377.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:29 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:29 ===
+           ts_client:(6:<0.378.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:29 ===
+           ts_client:(6:<0.379.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:29 ===
+           ts_client:(6:<0.380.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:29 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:29 ===
+           ts_client:(6:<0.381.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:29 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:29 ===
+           ts_client:(6:<0.382.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:29 ===
+           ts_client:(6:<0.383.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:29 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:29 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:29 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:29 ===
+           ts_client:(6:<0.370.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:29 ===
+           ts_client:(6:<0.384.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:29 ===
+           ts_client:(6:<0.385.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:30 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:30 ===
+           ts_client:(6:<0.387.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:30 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:30 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:30 ===
+           ts_client:(6:<0.388.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:30 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:30 ===
+           ts_client:(6:<0.389.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:30 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:30 ===
+           ts_client:(6:<0.390.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:30 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:30 ===
+           ts_client:(6:<0.391.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:30 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:30 ===
+           ts_client:(6:<0.392.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:30 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:30 ===
+           ts_client:(6:<0.393.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:30 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:30 ===
+           ts_client:(6:<0.386.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:30 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:30 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:30 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:30 ===
+           ts_client:(6:<0.394.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:30 ===
+           ts_client:(6:<0.395.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+           ts_client:(6:<0.396.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+           ts_client:(6:<0.397.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+           ts_client:(6:<0.398.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+           ts_client:(6:<0.375.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+           ts_client:(6:<0.399.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+           ts_client:(6:<0.400.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+           ts_client:(6:<0.401.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+           ts_client:(6:<0.402.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+           ts_client:(6:<0.403.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+           ts_client:(6:<0.404.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+           ts_client:(6:<0.405.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+           ts_client:(6:<0.406.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+           ts_client:(6:<0.407.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+           ts_client:(6:<0.408.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+           ts_client:(6:<0.409.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+           ts_client:(6:<0.410.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:31 ===
+           ts_client:(6:<0.411.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:32 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:32 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:32 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:32 ===
+           ts_client:(6:<0.412.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:32 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:32 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:32 ===
+           ts_client:(6:<0.413.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:32 ===
+           ts_client:(6:<0.414.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:32 ===
+           ts_client:(6:<0.415.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:32 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:32 ===
+           ts_client:(6:<0.416.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:32 ===
+           ts_client:(6:<0.417.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:32 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:32 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:32 ===
+           ts_client:(6:<0.418.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:32 ===
+           ts_client:(6:<0.419.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:32 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:32 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:32 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:32 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:32 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:32 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:32 ===
+           ts_client:(6:<0.420.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:32 ===
+           ts_client:(6:<0.421.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:32 ===
+           ts_client:(6:<0.423.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:32 ===
+           ts_client:(6:<0.422.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:32 ===
+           ts_client:(6:<0.424.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:32 ===
+           ts_client:(6:<0.425.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:33 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:33 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:33 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:33 ===
+           ts_client:(6:<0.426.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:33 ===
+           ts_client:(6:<0.427.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:33 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:33 ===
+           ts_client:(6:<0.428.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:33 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:33 ===
+           ts_client:(6:<0.429.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:33 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:33 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 2-Feb-2016::15:53:33 ===
+         ts_launcher:(5:<0.127.0>) This was the last phase, wait for connected users to finish their session
+
+=INFO REPORT==== 2-Feb-2016::15:53:33 ===
+         ts_launcher:(6:<0.127.0>) launcher terminating for reason normal
+
+=INFO REPORT==== 2-Feb-2016::15:53:33 ===
+     ts_launcher_mgr:(6:<0.121.0>) All launchers are done on node 'tsung_controller_51@Wonko-the-Sane', wait for active clients to finish
+
+=INFO REPORT==== 2-Feb-2016::15:53:33 ===
+           ts_client:(6:<0.430.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:33 ===
+           ts_client:(6:<0.431.0>) Session ending 
+
+=INFO REPORT==== 2-Feb-2016::15:53:33 ===
+           ts_client:(6:<0.432.0>) Session ending 
+
+=WARNING REPORT==== 2-Feb-2016::15:53:35 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=INFO REPORT==== 2-Feb-2016::15:53:38 ===
+     ts_launcher_mgr:(5:<0.121.0>) No more active users 'tsung_controller_51@Wonko-the-Sane' "6775"
+
+=INFO REPORT==== 2-Feb-2016::15:53:39 ===
+              ts_mon:(6:<0.70.0>) Stop asked, no more users, last launcher stopped, OK to stop
+
+=INFO REPORT==== 2-Feb-2016::15:53:39 ===
+              ts_mon:(5:<0.70.0>) stopping monitor (normal)

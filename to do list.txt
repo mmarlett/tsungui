@@ -1,0 +1,32 @@
+Tests page ->
+
+1. Name, URLs
+	a) Readable Name
+	b) Urls for the config
+
+2. Type
+	Main params of last run -
+	a) Number of phases, phase criteria
+
+3. Created
+	Date test was created
+
+4. Run count
+	How many times has this run
+
+5. Last run
+	When did it last run
+
+6. Actions
+	a) Run
+	b) Schedule
+	c) Edit
+	d) Copy
+	e) Archive
+
+
+Hosts? (Set up so that servers have to be put in as a config instead of just on the fly — to help limit typos)
+
+RRDs?
+
+JSON?

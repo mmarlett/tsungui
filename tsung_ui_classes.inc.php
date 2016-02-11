@@ -44,13 +44,98 @@ class sntmedia_tsungUI {
 	* Get List of possible Tests (each test is a directory in templates)
 	* @return array
 	*/
-	public function getTestplanList(){
+	public function getTestplanList($order = 'ASC'){
 		$testplan_list = array();
+		if (($order != 'ASC') && ($order != 'DESC')){ //don't let anything else in
+			$order = 'ASC';
+		}
+		//look in the db for the test plans
+		$query = "SELECT DISTINCT `name` FROM `tsung_config_templates` ORDER BY `name` $order";
+		if ($res = $this->_link->query($query))
+		{
+			while ($row = $res->fetch_array(MYSQLI_ASSOC)){
+				$testplan_list[] = $row['name'];
+			}
+		}
+		//Using db instead of file system 
+		/*
 		foreach (scandir(sntmedia_PATH_TEMPLATES) as $dir){
 			if ($dir<>'.' && $dir<>'..' && $dir<>'.DS_Store' && file_exists(sntmedia_PATH_TEMPLATES.'/'.$dir.'/config.xml')){$testplan_list[] = $dir;};
 		}
+		*/
 		return $testplan_list;
 	}
+
+	public function getReportCount($type){
+		switch($type) {
+			case 'archived':
+				$where =  '`status` = \'archived\'';
+			break;
+			case 'active':
+				$where =  '`status` = \'running\'';
+			break;
+			default;
+				$where =  '`status` = \'finished\'';
+			break;
+		}
+	
+		$query = "SELECT count(`id`) AS count FROM `tsung_statusinfo` WHERE $where;";
+		$res = $this->_link->query($query);
+		$row = $res->fetch_array(MYSQLI_ASSOC);
+		return ($row['count']);
+	
+	}
+
+	public function archiveReport($id){
+		if (is_numeric($id)){
+			$query = "UPDATE `tsung_statusinfo` SET `status` = 'archived' WHERE `tsung_statusinfo`.`id` = '{$id}';";
+			$res = $this->_link->query($query);
+		}
+	}
+
+	/**
+	* Get List of possible Reports (each report should be in a directory in templates/testname/log)
+	* @return array
+	*/
+	public function getTestplanReports($order = 'DESC', $type = ''){
+		$report_list = array();
+		if (($order != 'ASC') && ($order != 'DESC')){ //don't let anything else in
+			$order = 'ASC';
+		}
+		//'waiting','running','canceled','finished','scheduled','archived'
+		// waiting, canceled and scheduled will not have reports		
+		switch($type) {
+			case 'archived':
+				$where =  '`status` = \'archived\'';
+			break;
+			case 'active':
+				$where =  '`status` = \'running\'';
+			break;
+			default;
+				$where =  '`status` = \'finished\'';
+			break;
+		}
+		
+		//look in the db for the test plans
+		
+		
+		$query = "SELECT * FROM `tsung_statusinfo` WHERE $where ORDER BY `started_at` $order";
+		if ($res = $this->_link->query($query))
+		{
+			while ($row = $res->fetch_array(MYSQLI_ASSOC))
+			{
+					$report_list[] = $row;
+				$path = $row['template'].'/log/'.$row['starttime'];
+				if (file_exists(sntmedia_PATH_TEMPLATES.$path.'report.html'))
+				{
+					$row['path'] = $path;
+					$report_list[] = $row;
+				}
+			}
+		}
+		return $report_list;
+	}
+
 
 	/**
 	* Get url from file
@@ -251,7 +336,40 @@ class sntmedia_tsungUI {
 		return; 
 	}
 
-	
+	/**************
+	*
+	*returns a list of the tables as an array
+	*
+	**************/
+	public function getTableNames(){
+		$query = "SHOW TABLES IN `tsung`";// like 'tsung_%' ";
+		$this->_link->query($query);
+		$res = $this->_link->query($query);
+		$tables = array();
+		while ($row = $res->fetch_array(MYSQLI_ASSOC)){
+			$tables[] = $row['Tables_in_tsung'];
+		}
+		return $tables;
+	}
+
+
+	/**************
+	*
+	*@param string $tbl_name a table in the database
+	*returns a list of the columns as an array
+	*
+	**************/
+	public function getColumnNames($tbl_name){
+		$tbl_name = $this->_link->real_escape_string($tbl_name);
+		$query = 'SHOW COLUMNS IN `'.$tbl_name.'` FROM `tsung`';
+		$this->_link->query($query);
+		$res = $this->_link->query($query);
+		$columns = array();
+		while ($row = $res->fetch_array(MYSQLI_ASSOC)){
+			$columns[] = $row['Field'];
+		}
+		return $columns;
+	}
 
 	// Used by the cron --------------------
 	
@@ -276,7 +394,6 @@ class sntmedia_tsungUI {
 
 		$this->_link->query($query);
 	}
-
 
 	// not implemented yet
 	public function recorderIsRunning(){

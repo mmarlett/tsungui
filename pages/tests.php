@@ -4,11 +4,18 @@ if(!defined('sntmedia_TSUNG_UI')){die();}
 $testplan_list = $tsungUI->getTestplanList();
 $testplan_count = count($testplan_list);
 $action = '';
-
 if (isset($_GET['action'])){
 	$action = $_GET['action'];
-	
-	if ($action=='re_run'){
+}
+
+switch($action) {
+	case 'archive':
+
+	break;
+	case 'trash':
+
+	break;
+	case 're_run':
 		if (isset($_GET['id']) && ($_GET['id'])){
 			$plan =  $tsungUI->getTestplanByStartdate($_GET['id']);
 			if (isset ($plan['template'])){
@@ -17,28 +24,50 @@ if (isset($_GET['action'])){
 		}elseif(isset($_GET['template']) && (in_array($_GET['template'], $testplan_list))){
 			$tsungUI->addTestplan($_GET['template'],'A re-run of '.$_GET['template']);
 		}
-	}elseif ($action=='edit'){
-		//get data for the test to be edited
-	}elseif ($action=='copy'){
-		//get data for the test to be edited
-	}elseif ($action=='archive'){
-		//get data for the test to be edited
-	}
-	
+	break;
+	case 'edit':
+
+	break;
+	case 'copy':
+
+	break;
+	case 'new':
+
+	break;
 }
 
 //
 
 if ($action=='new' || $action=='edit'|| $action=='copy'){
+	$tables = $tsungUI->getTableNames();
+	//print_r($tables);
+
+	foreach ($tables as $table)
+	{
+		$vars = $tsungUI->getColumnNames($table);
+		if (! isset($$table))
+		{
+			$$table = array();
+		}
+		foreach ($vars as $var)
+		{
+			if (! isset($$table[$var]))
+			{
+				$$table[$var] = '';
+			}
+		}
+	}
+	
 ////////////////////////////// EDIT OR NEW ////////////////////////////
 	if ($action=='edit'|| $action=='copy'){
+		
 		
 	}
 ?>
 <main class="main"> 
 <div class="flash-messages-placeholder container page ">
 	<h2 class="mbm">
-		Edit test
+		New test
 	</h2>
 	<form accept-charset="UTF-8" action="?page=tests" class="simple_form edit_endpoint" id="endpointForm" method="post">
 		<div style="margin:0;padding:0;display:inline">
@@ -46,13 +75,13 @@ if ($action=='new' || $action=='edit'|| $action=='copy'){
 			<input name="_method" type="hidden" value="patch" />
 		</div>
 		<div class="row">
-			<label class="col-md-2 mtm">Test Settings</label> 
+			<label class="col-md-2">Test Settings</label> 
 			<div class="endpoint-settings col-md-6">
 				<div class="form-panel">
-					<div class="form-group string optional tsung_config_template-name">
-						<label class="string optional control-label" for="tsung_config_template-name">Name</label>
+					<div class="form-group string optional tsung_config_templates-name">
+						<label class="string optional control-label" for="tsung_config_templates-name">Name</label>
 						<div>
-							<input class="string optional form-control" id="tsung_config_template-name" name="tsung_config_template[name]" placeholder="Test Name" type="text" value="<?php $tsung_config_template['name'] ?>" />
+							<input class="string optional form-control" id="tsung_config_templates-name" name="tsung_config_templates[name]" placeholder="Test Name" type="text" value="<?php $tsung_config_templates['name'] ?>" />
 						</div>
 					</div>
 					<div class="endpoint-type row">
@@ -604,73 +633,76 @@ debug
 
 
 ?>
-  <main >
-    <div class="flash-messages-placeholder page ">
-  <div class="clearfix">
-      <h2 class="pull-left">All tests</h2>
-    <a href="?page=tests&amp;action=new" class="pull-right btn-main btn-big"><span class="glyphicon glyphicon-plus"></span> New Test</a>
-  </div>
+<main >
+	<div class="page">
+		<div class="clearfix">
+			<h2 class="pull-left">All tests</h2>
+			<a href="?page=tests&amp;action=new" class="pull-right btn-main btn-big"><span class="glyphicon glyphicon-plus"></span> New Test</a>
+		</div>
+		<div class="filter">
+			<div class="filter-panel">
+				<div class="section"><label>Show:</label>
+					<div class="btn-group btn-group-sm"><a class="btn btn-default active" href="?page=tests">Active <span class="active-count">(<?php echo $testplan_count; ?>)</span></a><a class="btn btn-default " href="?page=tests&amp;type=completed">Completed <span class="completed-count">(<?php echo $completed_count; ?>)</span></a><a class="btn btn-default " href="?page=tests&amp;type=draft">Draft (<?php echo $draft_count; ?>)<span class="draft-count"></span></a><a class="btn btn-default " href="?page=tests&amp;type=scheduled">Scheduled <span class="scheduled-count"></span></a><a class="btn btn-default " href="?page=tests&amp;type=archived">Archived <span class="archived-count">(3)</span></a>
+					</div>
+				</div>
+				<div class="section">
+				<label>Sort:</label>
+					<div class="btn-group btn-group-sm"><a class="btn btn-default active" href="?page=tests&amp;order=desc">Newest</a><a class="btn btn-default " href="?page=tests&amp;order=asc">Oldest</a>
+					</div>
+				</div>
+				<div class="section search">
+					<label>Search: </label>
+					<div class="input-wrapper">
+						<form action="?page=tests" method="get" id="search-box">
+						<div class="form-group has-feedback">
+							<input type="hidden" name="type" value="">
+							<div class="input-group">
+								<div class="input-group-btn">
+								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-filter"></i></button>
+								<ul id='filter-dropdown' class="dropdown-menu dropdown-menu-form" role="menu">
+								<li role="presentation" class="dropdown-header">Filter search by:</li>
+								<li>
+								<div class="radio">
+									<label><input checked="checked" id="search_filter_all" name="search_filter" type="radio" value="all" />All</label>
+								</div></li>
+								<li>
+								<div class="radio">
+									<label><input id="search_filter_tests" name="search_filter" type="radio" value="tests" />Name</label>
+								</div></li>
+								<li><div class="radio">
+									<label><input id="search_filter_urls" name="search_filter" type="radio" value="urls" />URL</label>
+								</div></li>
+								<li><div class="radio"><label><input id="search_filter_tags" name="search_filter" type="radio" value="tags" />Tag</label>
+								</div></li>
+								<li><div class="radio"><label><input id="search_filter_notes" name="search_filter" type="radio" value="notes" />Notes</label>
+								</div></li>
+								</ul>
+								</div><!-- /btn-group -->
+								<input type="text" id="search-box" class="form-control typeahead first" name="search" placeholder="Search for tests, urls, tags, and notes" value=""><span class="input-group-btn go-search-buttom"><button class="btn btn-default" type="submit">Go!</button></span>
+							</div><!-- /input-group -->
+						</div><!-- /form-group -->
+						</form>
+					</div><!-- /input-wrapper -->
+				</div><!-- /section search -->
+			</div><!-- /filter-panel -->
+		</div><!-- /filter -->
 
-  <div class="filter">
-    <div class="filter-panel">
-      <div class="section"><label>Show:</label><div class="btn-group btn-group-sm"><a class="btn btn-default active" href="?page=tests">Active <span class="active-count">(<?php echo $testplan_count; ?>)</span></a><a class="btn btn-default " href="?page=tests&amp;type=completed">Completed <span class="completed-count">(<?php echo $completed_count; ?>)</span></a><a class="btn btn-default " href="?page=tests&amp;type=draft">Draft (<?php echo $draft_count; ?>)<span class="draft-count"></span></a><a class="btn btn-default " href="?page=tests&amp;type=scheduled">Scheduled <span class="scheduled-count"></span></a><a class="btn btn-default " href="?page=tests&amp;type=archived">Archived <span class="archived-count">(3)</span></a></div></div>
-      <div class="section"><label>Sort:</label><div class="btn-group btn-group-sm"><a class="btn btn-default active" href="?page=tests&amp;order=desc">Newest</a><a class="btn btn-default " href="?page=tests&amp;order=asc">Oldest</a></div></div>
-      <div class="section search">
-        <label>Search: </label>
-        <div class="input-wrapper">
-          <form action="?page=tests" method="get" id="search-box">
-            <div class="form-group has-feedback">
-              <input type="hidden" name="type" value="">
-              <div class="input-group">
-                 <div class="input-group-btn">
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-filter"></i></button>
-                    <ul id='filter-dropdown' class="dropdown-menu dropdown-menu-form" role="menu">
-                      <li role="presentation" class="dropdown-header">Filter search by:</li>
-                      <li>
-                        <div class="radio"><label><input checked="checked" id="search_filter_all" name="search_filter" type="radio" value="all" />All</label></div>
-                      </li>
-                      <li>
-                        <div class="radio"><label><input id="search_filter_tests" name="search_filter" type="radio" value="tests" />Name</label></div>
-                      </li>
-                      <li>
-                        <div class="radio"><label><input id="search_filter_urls" name="search_filter" type="radio" value="urls" />URL</label></div>
-                      </li>
-                      <li>
-                        <div class="radio"><label><input id="search_filter_tags" name="search_filter" type="radio" value="tags" />Tag</label></div>
-                      </li>
-                      <li>
-                        <div class="radio"><label><input id="search_filter_notes" name="search_filter" type="radio" value="notes" />Notes</label></div>
-                      </li>
-                    </ul>
-                  </div><!-- /btn-group -->
-                <input type="text" id="search-box" class="form-control typeahead first" name="search" placeholder="Search for tests, urls, tags, and notes" value="">
-                <span class="input-group-btn go-search-buttom">
-                  <button class="btn btn-default" type="submit">Go!</button>
-                </span>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="endpointsListBox" data-url="/tests">
-    <div class="table-responsive">
-      <table class="list-table tests-list">
-        <thead>
-          <tr>
-            <th class="name">Name, URL(s)</th>
-            <th>Profile</th>
-            <th>Created</th>
-            <th>Run count</th>
-            <th>Last run</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="endpointsList">
-<?php
-foreach ($testplan_list as $template){
+		<div >
+			<div>
+			  <table class="list-table">
+				<thead>
+				  <tr>
+					<th class="name">Name, URL(s)</th>
+					<th>Profile</th>
+					<th>Created</th>
+					<th>Run count</th>
+					<th>Last run</th>
+					<th>Actions</th>
+				  </tr>
+				</thead>
+				<tbody id="endpointsList">
+			<?php
+	foreach ($testplan_list as $template){
 
 	echo '<tr><td class="name">	<span class="item-name"><a href="?page=tests&amp;template=';
 	echo urlencode($template);
@@ -691,74 +723,73 @@ foreach ($testplan_list as $template){
 	echo '
 	</div>';
 	echo '      <div class="all-urls-list hidden">
-          <div class="endpoint-list-url">
-';
+		  <div class="endpoint-list-url">
+	';
 	foreach ($templates[$template]['urls'] as $url){
 		echo '	<a class="text-muted" href="?page=tests&amp;template=';
 		echo urlencode($template);
 		echo '">';
 		echo $url;
 		echo '</a>
-';
+	';
 	}
 	echo '
-              <a href="#hide" class="hide-all-urls">(less <span class="caret-up"></span>)</a>
-          </div>
-      </div>
-    </td>
+			  <a href="#hide" class="hide-all-urls">(less <span class="caret-up"></span>)</a>
+		  </div>
+	  </div>
+	</td>
 	';
 	echo '<td class="profile">';
-    echo $templates[$template]['profile'];
+	echo $templates[$template]['profile'];
 	echo '</td>';
 	echo '
-    <td class="created-date">
-      <p class="number">';
-      	if ($templates[$template]['created'] != ''){
-       		if (strtotime($templates[$template]['created']) > strtotime('24 hours ago')){
-        		echo date('D, M. j Y', strtotime($templates[$template]['created']));
-        	}else{
-        		echo date('g:i a', strtotime($templates[$template]['created']));
-        	}
-        }else{
-        	echo '—';
-        }
-    echo '</p>
-    </td>';
-	echo '    <td class="count">
-      <p class="number">';
-        echo $templates[$template]['run_count'];
+	<td class="created-date">
+	  <p class="number">';
+		if ($templates[$template]['created'] != ''){
+			if (strtotime($templates[$template]['created']) > strtotime('24 hours ago')){
+				echo date('D, M. j Y', strtotime($templates[$template]['created']));
+			}else{
+				echo date('g:i a', strtotime($templates[$template]['created']));
+			}
+		}else{
+			echo '—';
+		}
 	echo '</p>
-    </td>';
+	</td>';
+	echo '    <td class="count">
+	  <p class="number">';
+		echo $templates[$template]['run_count'];
+	echo '</p>
+	</td>';
 	echo '    <td class="run-date">
-        <p class="number">';
-       	if ($templates[$template]['last_run'] != ''){
-       		if (strtotime($templates[$template]['last_run']) > strtotime('24 hours ago')){
-        		echo date('D, M. j Y', strtotime($templates[$template]['last_run']));
-        	}else{
-        		echo date('g:i a', strtotime($templates[$template]['last_run']));
-        	}
-        }else{
-        	echo '—';
-        }
-    echo '</p>
-    </td>
-';
+		<p class="number">';
+		if ($templates[$template]['last_run'] != ''){
+			if (strtotime($templates[$template]['last_run']) > strtotime('24 hours ago')){
+				echo date('D, M. j Y', strtotime($templates[$template]['last_run']));
+			}else{
+				echo date('g:i a', strtotime($templates[$template]['last_run']));
+			}
+		}else{
+			echo '—';
+		}
+	echo '</p>
+	</td>
+	';
 									echo '<td class="actions">
-<a class="action-icon repeat" data-container="body" data-method="put" data-toggle="tooltip" href="?page=tests&amp;action=re_run&amp;template='.urlencode($template).'" id="re-run-test" rel="nofollow" title="Re-run"></a>
-<a class="action-icon schedule" data-container="body" data-toggle="tooltip" href="?page=tests&amp;action=schedule&amp;template='.urlencode($template).'" title="Schedule"></a>
-<a class="action-icon edit" data-container="body" data-toggle="tooltip" href="?page=tests&amp;action=edit&amp;template='.urlencode($template).'" title="Edit"></a>
-<a class="action-icon copy" data-container="body" data-toggle="tooltip" href="?page=tests&amp;action=copy&amp;template='.urlencode($template).'" title="Copy"></a>
-<a class="action-icon archive" data-container="body" data-method="put" data-toggle="tooltip" href="?page=tests&amp;action=archive&amp;template='.urlencode($template).'" rel="nofollow" title="Archive"></a>
-    </td>';
-echo '  </tr>
-';
-}
-
-?>
-        </tbody>
-      </table>
-    </div>
-  </div>
+	<a class="action-icon repeat" data-container="body" data-method="put" data-toggle="tooltip" href="?page=tests&amp;action=re_run&amp;template='.urlencode($template).'" id="re-run-test" rel="nofollow" title="Re-run"></a>
+	<a class="action-icon schedule" data-container="body" data-toggle="tooltip" href="?page=tests&amp;action=schedule&amp;template='.urlencode($template).'" title="Schedule"></a>
+	<a class="action-icon edit" data-container="body" data-toggle="tooltip" href="?page=tests&amp;action=edit&amp;template='.urlencode($template).'" title="Edit"></a>
+	<a class="action-icon copy" data-container="body" data-toggle="tooltip" href="?page=tests&amp;action=copy&amp;template='.urlencode($template).'" title="Copy"></a>
+	<a class="action-icon archive" data-container="body" data-method="put" data-toggle="tooltip" href="?page=tests&amp;action=archive&amp;template='.urlencode($template).'" rel="nofollow" title="Archive"></a>
+	</td>';
+	echo '  </tr>
+	';
+	}
+			?>
+				</tbody>
+			  </table>
+			</div><!-- /table-responsive -->
+		</div><!-- /endpointsListBox -->
 
 
     </div>

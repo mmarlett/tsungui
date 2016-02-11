@@ -10,6 +10,25 @@ if (! isset ($_GET['starttime'])){
 }
 $subdir = $_GET['starttime'];
 $path = $tsungUI->path2url(sntmedia_PATH_TEMPLATES.$dir.'/log/'.$subdir.'/report.html');
+$order = 'DESC';// ASC or DESC
+if (isset ($_GET['order']))
+{
+	if (($_GET['order']=='ASC') || ($_GET['order']=='DESC'))
+	{
+		$order = $_GET['order'];
+	}
+}
+
+$type = '';// completed, active, archived
+if (isset ($_GET['type']))
+{
+	if (($_GET['type']=='active') || ($_GET['type']=='archived'))
+	{
+		$type = $_GET['type'];
+	}
+}
+
+
 
 if ($subdir && $dir){
 ?>
@@ -35,8 +54,34 @@ if ($subdir && $dir){
 
   <div class="filter">
     <div class="filter-panel">
-      <div class="section"><label>Show:</label><div class="btn-group btn-group-sm"><a class="btn btn-default active" href="?page=tests">Active <span class="active-count">(<?php // echo $testplan_count; ?>)</span></a><a class="btn btn-default " href="?page=tests&amp;type=completed">Completed <span class="completed-count">(<?php // echo $completed_count; ?>)</span></a><a class="btn btn-default " href="?page=tests&amp;type=draft">Draft (<?php // echo $draft_count; ?>)<span class="draft-count"></span></a><a class="btn btn-default " href="?page=tests&amp;type=scheduled">Scheduled <span class="scheduled-count"></span></a><a class="btn btn-default " href="?page=tests&amp;type=archived">Archived <span class="archived-count">(3)</span></a></div></div>
-      <div class="section"><label>Sort:</label><div class="btn-group btn-group-sm"><a class="btn btn-default active" href="?page=tests&amp;order=desc">Newest</a><a class="btn btn-default " href="?page=tests&amp;order=asc">Oldest</a></div></div>
+      <div class="section"><label>Show:</label>
+    	<div class="btn-group btn-group-sm">
+    	
+    	<a class="btn btn-default<?php if ($type == ''){echo ' active';} ?>" href="?page=reports&amp;type=completed<?php if ($order){echo '&amp;order='.$order;} ?>">Completed <span class="completed-count">(<?php
+    	echo $tsungUI->getReportCount('finished');// echo $completed_count;
+    	?>)</span></a>
+	<a class="btn btn-default<?php
+	if ($type == 'active'){echo ' active';}
+	?>" href="?page=reports&amp;type=active<?php
+	if ($order){echo '&amp;order='.$order;}
+	?>">Active <span class="active-count">(<?php
+	echo $tsungUI->getReportCount('active'); // echo $testplan_count;
+	?>)</span></a>
+    	<a class="btn btn-default<?php
+    	if ($type == 'archived'){echo ' active';}
+    	?>" href="?page=reports&amp;type=archived<?php
+    	if ($order){echo '&amp;order='.$order;}
+    	?>">Archived <span class="archived-count">(<?php
+    	 echo $tsungUI->getReportCount('archived');// echo $archived_count;
+    	 ?>)</span></a>
+    	</div>
+    </div>
+	<div class="section"><label>Sort:</label>
+		<div class="btn-group btn-group-sm">
+			<a class="btn btn-default<?php if ($order == 'DESC'){echo ' active';} ?>" href="?page=reports<?php if ($type){echo '&amp;type='.$type;} ?>&amp;order=DESC">Newest</a>
+			<a class="btn btn-default<?php if ($order == 'ASC'){echo ' active';} ?>" href="?page=reports<?php if ($type){echo '&amp;type='.$type;} ?>&amp;order=ASC">Oldest</a>
+		</div>
+	</div>
       <div class="section search">
         <label>Search: </label>
         <div class="input-wrapper">
@@ -94,59 +139,70 @@ if ($subdir && $dir){
 
 	
 		<?php
-			$testplan_list = $tsungUI->getTestplanList();
-			foreach ($testplan_list as $dir){
-				if ($dir<>'.' && $dir<>'..'){
-					$subdirs = sntmedia_PATH_TEMPLATES.$dir.'/log/';
-					if (is_dir($subdirs))
-					{
-						foreach (scandir($subdirs, SCANDIR_SORT_DESCENDING) as $subdir)
-						{
-							if ($subdir<>'.' && $subdir<>'..' && is_dir($subdirs.$subdir))
-							{
-								$info = $tsungUI->getTestInfoByPath($dir, $subdir);
-								if (file_exists($subdirs.$subdir.'/report.html'))
-								{
-									echo "<tr><td><a href='?page=reports&config=$dir&starttime=$subdir'><b class='title'>".(str_replace('_',' ',$dir))."</b></a></td>";
-									if (isset ($info['started_at'])){
-										$labeldate = date('D, M. j Y g:i a', strtotime($info['started_at']));
-									}else{
-										$datetimes = explode ('-', $subdir);
-										$labeldate = date('D, M. j Y', strtotime($datetimes[0])).date(' g:i a', strtotime($datetimes[1]));
-									}
-									echo '<td>'.$labeldate.'</td>';
-									if ($info['page_mean']){
-										echo $info['page_mean'];
-									}else{
-										echo '<td></td>';
-									}
-									if ($info['page_throughput']){
-										echo $info['page_throughput'];
-									}else{
-										echo '<td></td>';
-									}
-									if ($info['comment']){
-										echo '<td>'.$info['comment'].'</td>';
-									}else{
-										echo '<td></td>';
-									}
-									echo '<td class="actions">
-<a class="action-icon repeat" data-container="body" data-method="put" data-toggle="tooltip" href="?page=tests&amp;action=re_run&amp;id='.$subdir.'" id="re-run-test" rel="nofollow" title="Re-run"></a>
-<a class="action-icon schedule" data-container="body" data-toggle="tooltip" href="?page=tests&amp;action=schedule&amp;id='.$subdir.'" title="Schedule"></a>
-<a class="action-icon edit" data-container="body" data-toggle="tooltip" href="?page=tests&amp;action=edit&amp;id='.$subdir.'" title="Edit"></a>
-<a class="action-icon copy" data-container="body" data-id="'.$subdir.'" data-toggle="tooltip" href="?page=tests&amp;action=copy&amp;id='.$subdir.'" title="Copy"></a>
-<a class="action-icon archive" data-container="body" data-method="put" data-toggle="tooltip" href="?page=tests&amp;action=archive&amp;id='.$subdir.'" rel="nofollow" title="Archive"></a>
-    </td>';
-									echo "</tr>\n";
-								}
-							}
-						}
-					}
-
+			$report_list = $tsungUI->getTestplanReports($order, $type);
+//			echo '<pre>';
+//			print_r($report_list);
+//				echo '</pre>';
+		foreach ($report_list as $report){
+				$info = $tsungUI->getTestInfoByPath($report['template'], $report['starttime']);
+				echo '<tr><td><a href="?page=reports&config=';
+				echo urlencode($report['template']);
+				echo '&starttime=';
+				$report['starttime'] = urlencode($report['starttime']);
+				echo $report['starttime'];
+				echo '><b class="title">';
+				echo (str_replace('_',' ',$report['template']));
+				echo '</b></a></td>';
+				echo '<td>';
+				echo date('D, M. j Y g:i a', strtotime($report['started_at']));
+				echo '</td>';
+				if ($info['page_mean']){
+					echo $info['page_mean'];
+				}else{
+					echo '<td></td>';
 				}
+				if ($info['page_throughput']){
+					echo $info['page_throughput'];
+				}else{
+					echo '<td></td>';
+				}
+				echo '<td>';
+				echo htmlentities($report['comment']);
+				echo '</td>';
+				echo '<td class="actions">
+<a class="action-icon repeat" data-container="body" data-method="put" data-toggle="tooltip" href="?page=status&amp;action=re_run&amp;id=';
+				echo $report['starttime'];
+				echo '" id="re-run-test" rel="nofollow" title="Re-run"></a>
+<a class="action-icon schedule" data-container="body" data-toggle="tooltip" href="?page=tests&amp;action=schedule&amp;id=';
+				echo $report['starttime'];
+				echo '" title="Schedule"></a>
+<a class="action-icon edit" data-container="body" data-toggle="tooltip" href="?page=tests&amp;action=edit&amp;id=';
+				echo $report['starttime'];
+				echo '" title="Edit"></a>
+<a class="action-icon copy" data-container="body" data-id="';
+				echo $report['starttime'];
+				echo '" data-toggle="tooltip" href="?page=tests&amp;action=copy&amp;id=';
+				echo $report['starttime'];
+				echo '" title="Copy"></a>
+				';
+				if ($type == 'archived'){
+					echo '<a class="action-icon trash" data-container="body" data-method="put" data-toggle="tooltip" href="?page=reports&amp;action=trash&amp;id=';
+					echo $report['id'];
+					if ($order){echo '&amp;order='; echo $order;} 
+					if ($type){echo '&amp;type='; echo $type;}
+					echo '" rel="nofollow" title="Delete"></a></td>';
+				}else{
+					echo '<a class="action-icon archive" data-container="body" data-method="put" data-toggle="tooltip" href="?page=reports&amp;action=archive&amp;id=';
+					echo $report['id'];
+					if ($order){echo '&amp;order='; echo $order;} 
+					if ($type){echo '&amp;type='; echo $type;}
+					echo '" rel="nofollow" title="Archive"></a></td>';
+				}
+				echo '</tr>
+';
+
 			}
 		?>
-	</ul>
 	
 	</tbody>
 	</table>

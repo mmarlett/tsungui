@@ -4,7 +4,7 @@
 * @license free as in beer
 * @version 0.3
 * @author Mike Marlett @ sntmedia
-* @abstract Contains Configuration Constants and Utility Class; based on v. 0.2 by blueend.com
+* @abstract Contains Configuration Constants; based on v. 0.2 by blueend.com
 */
 //Change as needed
 define('sntmedia_DB_USER',		'sntmedia');
@@ -17,9 +17,10 @@ setlocale(LC_MONETARY, 'en_US');
 
 
 //This is needed for the report generation
-define('sntmedia_TSUNG_PERLSTATS','/usr/local/Cellar/tsung/1.6.0/lib/tsung/bin/tsung_stats.pl --dygraph');//path to 'tsung/src/tsung_stats.pl'
+define('sntmedia_TSUNG_PERLSTATS','/usr/local/Cellar/tsung/1.6.0/lib/tsung/bin/tsung_stats.pl --dygraph');//path to 'tsung/src/tsung_stats.pl' 
+// '--dygraph' is optional setting for producing graphs; other arguements can be passed.
 
-define('sntmedia_TSUNG_MAX_PROCESSES', 100);//How many tests should we spawn simultanously?
+define('sntmedia_TSUNG_MAX_PROCESSES', 100);//How many tests should we spawn simultanously? 
 
 define('sntmedia_PATH_TEMPLATES',dirname(__file__).'/templates/');
 

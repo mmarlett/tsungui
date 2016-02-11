@@ -28,7 +28,7 @@ tsung_session
 tsung_statusinfo
 
 */
-echo( $tsungUI->getTsungConfig('1'));
+echo( $tsungUI->getTsungConfig('2'));
 
 echo '
 </pre>

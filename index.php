@@ -13,6 +13,12 @@ $tsungUI = new sntmedia_tsungUI();
 if (isset($_POST['testplan']) && ($_POST['testplan']) && isset($_POST['action']) && ($_POST['action']=='run')){
 	$tsungUI->addTestplan($_POST['testplan'],$_POST['comment']);
 }
+if (isset($_GET['action']) && isset($_GET['id']))
+{
+	if ($_GET['action'] == 'archive'){
+		$tsungUI->archiveReport($_GET['id']);
+	}
+}
 
 $testplan_list = $tsungUI->getTestplanList();
 ?>
@@ -29,6 +35,11 @@ $testplan_list = $tsungUI->getTestplanList();
 <script src="/jquery-ui-1.11.4.custom/external/jquery/jquery.js"></script>
 <script src="/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
 <script src="/assets/bootstrap/js/bootstrap.js"></script>
+<script language="javascript" type="text/javascript">
+  function resizeIframe(obj) {
+    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+  }
+</script>
 
 	<style>
 

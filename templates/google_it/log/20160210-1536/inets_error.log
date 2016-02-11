@@ -1,0 +1,4 @@
+[10/Feb/2016:15:37:47 -0600] access to /favicon.ico failed for 0:0:0:0:0:0:0:1, reason: 
+"httpd_file: Can't access /Library/WebServer/Documents/tsungui/templates/google_it/log/20160210-1536/favicon.ico: File not found"
+[10/Feb/2016:15:37:47 -0600] access to /assets/ico/favicon.ico failed for 0:0:0:0:0:0:0:1, reason: 
+"httpd_file: Can't access /Library/WebServer/Documents/tsungui/templates/google_it/log/20160210-1536/assets/ico/favicon.ico: File not found"

@@ -183,5 +183,93 @@ class tsungUI_XML {
 
 }
 
+	/**
+	* A set of static arrays that will return an ordered array to tell you which 
+	* children are acceptible for a given parent table, and in what order
+	* @param string table
+	* @return array tables
+	*/
+
+	/*
+	In an ideal world, this would be dynamic, but tsung's XML requirements are too ridged
+	*/
+
+	public function getTsungConfigMap($parent_table='tsung_config_templates'){
+		switch($parent_table) {
+			case 'tsung_config_templates':
+				$children = array('tsung_clients','tsung_servers','tsung_monitors','tsung_load','tsung_sessions','tsung_options');
+			break;
+			//first level children
+			case 'tsung_clients':
+				$children = array('tsung_client');
+			break;
+			case 'tsung_servers':
+				$children = array('tsung_server');
+			break;
+			case 'tsung_monitors':
+				$children = array('tsung_snmp','tsung_mysqladmin');
+			break;
+			case 'tsung_load':
+				$children = array('tsung_arrivalphase','tsung_user');
+			break;
+			case 'tsung_sessions':
+				$children = array('tsung_session');
+			break;
+			case 'tsung_options':
+				$children = array('tsung_option');
+			break;
+
+
+			//second level children
+			case 'tsung_client':
+				$children = array('tsung_client_ip');
+			break;
+			case 'tsung_snmp':
+				$children = array('tsung_oid');
+			break;
+			case 'tsung_arrivalphase':
+				$children = array('tsung_users', 'tsung_session_setup');
+			break;
+			case 'tsung_session':
+				$children = array('tsung_thinktime', 'tsung_request', 'tsung_transaction'); //tsung_change_type , tsung_for
+			break;
+			case 'tsung_option':
+				$children = array('tsung_user_agent');
+			break;
+
+
+			
+			//third level children
+			case 'tsung_request':
+				$children = array('tsung_http', 'tsung_mysql', 'tsung_websocket', 'tsung_dyn_variable', 'tsung_match'); //tsung_jabber, tsung_raw, tsung_ldap, tsung_mqtt
+			break;
+
+			
+			
+			//fourth level children
+			case 'tsung_http':
+				$children = array('tsung_add_cookie', 'tsung_http_header', 'tsung_oauth', 'www_authenticate');
+			break;
+			
+			
+			default;
+				$children = array();
+			break;
+		}
+		return $children;
+	}
+
+/*Unemplimented 
+tsung_for {can nest another for} (from="1" to="10" incr="1" var="loops")
+tsung_change_type (new_type="ts_http" host="foo.bar" port="80" server_type="tcp" store="true" bidi="true")
+tsung_jabber (type="chat" ack="no_ack" size="16" destination="previous")
+tsung_xmpp_authenticate (username="%%_username%%" passwd="%%_password%%")
+tsung_raw (data="BYEBYE" datasize="2048" ack="local")
+tsung_ldap
+tsung_setdynvars (sourcetype="file"  fileid="users" delimiter=";" order="iter" (type:random_string) length="10" (type:random_number) start="1" end="100" (type='muc:join') ack="local" room="room%%_room%%" nick="%%_nick1%%" size="16" )
+tsung_var (name="username")
+tsung_mqtt (type="connect" clean_start="true" keepalive="10" will_topic="will_topic" will_qos="0" will_msg="will_msg" will_retain="false" topic="test_topic" qos="1" retained="true"  timeout="60")
+tsung_amqp (type="basic.consume" vhost="/" channel="%%_loops%%" queue="test_queue" ack="true"  timeout="60")
+*/
 
 ?>

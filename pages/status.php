@@ -6,6 +6,7 @@ if (isset($_GET['action']) && ($_GET['action']==='cancel')){
 if (isset($_GET['action']) && ($_GET['action']==='delete')){
 	$tsungUI->deleteTestLog($_GET['id']);
 }
+//print_r($_POST);
 ?>
 <main>
 <div class="page">
@@ -31,7 +32,7 @@ echo "<option value='$plan'>$plan</option>";
 </select>
 <span class="input-group-btn"><button class="btn btn-default" type="submit">Run!</button></span>
 </div>
-<textarea class="text" name='comment' style="width:100%; margin-top:10px;" rows="1" placeholder="Enter notes for this test"></textarea>
+<textarea class="text" id="comment" name="comment" style="width:100%; margin-top:10px;" rows="1" placeholder="Enter notes for this test"></textarea>
 </div>
 </div>
 </div>
@@ -39,7 +40,7 @@ echo "<option value='$plan'>$plan</option>";
 </div>
 
 <div class="form-panel">
-<iframe src="<?php echo sntmedia_TOP_PATH; ?>status_table.php" frameborder="0" style="width:100%; display:table;" />
+<iframe src="<?php echo sntmedia_TOP_PATH; ?>status_table.php" frameborder="0" style="width:100%; display:table;" scrolling="no" onload="resizeIframe(this)"/>
 </div>
 </div>
 </div>

@@ -1,0 +1,222 @@
+
+=INFO REPORT==== 10-Feb-2016::15:36:25 ===
+    ts_config_server:(5:<0.69.0>) Config server started, logdir is "/Library/WebServer/Documents/tsungui/templates/google_it/log/20160210-1536"
+ 
+=INFO REPORT==== 10-Feb-2016::15:36:25 ===
+              ts_mon:(5:<0.50.0>) starting monitor, global 
+
+=INFO REPORT==== 10-Feb-2016::15:36:25 ===
+           ts_config:(5:<0.69.0>) Reading config file: config.xml
+
+=INFO REPORT==== 10-Feb-2016::15:36:25 ===
+      ts_config_http:(4:<0.69.0>) Get user agent: 30 "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.8) Gecko/20050513 Galeon/1.3.21" 
+
+=INFO REPORT==== 10-Feb-2016::15:36:25 ===
+      ts_config_http:(4:<0.69.0>) Get user agent: 30 "Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4" 
+
+=INFO REPORT==== 10-Feb-2016::15:36:25 ===
+      ts_config_http:(4:<0.69.0>) Get user agent: 40 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.103 Safari/537.36" 
+
+=INFO REPORT==== 10-Feb-2016::15:36:25 ===
+           ts_config:(5:<0.69.0>) Session name for id 1 is "http-example"
+
+=INFO REPORT==== 10-Feb-2016::15:36:25 ===
+    ts_config_server:(4:<0.69.0>) SYSINFO:Tsung version: 1.6.0
+
+=INFO REPORT==== 10-Feb-2016::15:36:25 ===
+    ts_config_server:(4:<0.69.0>) SYSINFO:Erlang version: Erlang/OTP 18 [erts-7.1] [source] [64-bit] [smp:4:4] [async-threads:8] [hipe] [kernel-poll:true] [dtrace]
+
+
+=INFO REPORT==== 10-Feb-2016::15:36:25 ===
+    ts_config_server:(4:<0.69.0>) SYSINFO:System architecture x86_64-apple-darwin15.0.0
+
+=INFO REPORT==== 10-Feb-2016::15:36:25 ===
+    ts_config_server:(4:<0.69.0>) SYSINFO:Current path: /usr/local/Cellar/tsung/1.6.0/lib/erlang/lib/tsung-1.6.0/ebin/tsung.beam
+
+=INFO REPORT==== 10-Feb-2016::15:36:25 ===
+              ts_mon:(5:<0.70.0>) Activate clients with text backend
+
+=INFO REPORT==== 10-Feb-2016::15:36:25 ===
+              ts_mon:(5:<0.70.0>) Starting tsung clients on hosts: [localhost]
+
+=INFO REPORT==== 10-Feb-2016::15:36:25 ===
+    ts_config_server:(5:<0.69.0>) Start a launcher on the controller beam localhost
+
+=INFO REPORT==== 10-Feb-2016::15:36:25 ===
+    alarm_handler: {set,{system_memory_high_watermark,[]}}
+
+=WARNING REPORT==== 10-Feb-2016::15:36:25 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=INFO REPORT==== 10-Feb-2016::15:36:25 ===
+  ts_launcher_static:(5:<0.126.0>) Launch msg receive ("localhost")
+
+=INFO REPORT==== 10-Feb-2016::15:36:25 ===
+         ts_launcher:(5:<0.127.0>) Launch msg receive ("localhost")
+
+=INFO REPORT==== 10-Feb-2016::15:36:25 ===
+    ts_config_server:(5:<0.69.0>) All remote beams started, syncing 
+
+=INFO REPORT==== 10-Feb-2016::15:36:25 ===
+    ts_config_server:(5:<0.69.0>) Undefined ports_range config 
+
+=INFO REPORT==== 10-Feb-2016::15:36:25 ===
+    ts_config_server:(5:<0.69.0>) New arrival phase 1 for client "localhost" (last ? true): will start 15 users
+
+=INFO REPORT==== 10-Feb-2016::15:36:25 ===
+    ts_config_server:(5:<0.69.0>) New arrival phase 2 for client "localhost" (last ? true): will start 100 users
+
+=INFO REPORT==== 10-Feb-2016::15:36:25 ===
+    ts_config_server:(5:<0.69.0>) New arrival phase 3 for client "localhost" (last ? true): will start 100 users
+
+=INFO REPORT==== 10-Feb-2016::15:36:25 ===
+    ts_config_server:(5:<0.69.0>) New arrival phase 4 for client "localhost" (last ? true): will start 15 users
+
+=INFO REPORT==== 10-Feb-2016::15:36:26 ===
+    ts_config_server:(5:<0.69.0>) New arrival phase 5 for client "localhost" (last ? true): will start 100 users
+
+=INFO REPORT==== 10-Feb-2016::15:36:26 ===
+    ts_config_server:(5:<0.69.0>) New arrival phase 6 for client "localhost" (last ? true): will start 100 users
+
+=INFO REPORT==== 10-Feb-2016::15:36:26 ===
+    ts_config_server:(5:<0.69.0>) New arrival phase 7 for client "localhost" (last ? true): will start 15 users
+
+=INFO REPORT==== 10-Feb-2016::15:36:26 ===
+    ts_config_server:(5:<0.69.0>) New arrival phase 8 for client "localhost" (last ? true): will start 100 users
+
+=INFO REPORT==== 10-Feb-2016::15:36:26 ===
+    ts_config_server:(5:<0.69.0>) New arrival phase 9 for client "localhost" (last ? true): will start 100 users
+
+=INFO REPORT==== 10-Feb-2016::15:36:26 ===
+         ts_launcher:(5:<0.127.0>) Expected duration of first phase: 60.0 sec (15 users) 
+
+=INFO REPORT==== 10-Feb-2016::15:36:26 ===
+         ts_launcher:(5:<0.127.0>) Can't get file descriptors limit from system, you should verify that 'maxusers' has a good value 
+=INFO REPORT==== 10-Feb-2016::15:36:26 ===
+         ts_launcher:(5:<0.127.0>) Activate launcher (15 users) in 10252 msec 
+
+=WARNING REPORT==== 10-Feb-2016::15:36:36 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=WARNING REPORT==== 10-Feb-2016::15:36:46 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=WARNING REPORT==== 10-Feb-2016::15:36:56 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=WARNING REPORT==== 10-Feb-2016::15:37:06 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=WARNING REPORT==== 10-Feb-2016::15:37:16 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=WARNING REPORT==== 10-Feb-2016::15:37:26 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=INFO REPORT==== 10-Feb-2016::15:37:33 ===
+         ts_launcher:(4:<0.127.0>) Need to wait 2.115 sec before changing phase, going to sleep
+
+=INFO REPORT==== 10-Feb-2016::15:37:36 ===
+         ts_launcher:(5:<0.127.0>) Waking up
+
+=INFO REPORT==== 10-Feb-2016::15:37:36 ===
+         ts_launcher:(5:<0.127.0>) Start a new arrival phase (100 users, 0.001); expected duration=120.0 sec
+
+=WARNING REPORT==== 10-Feb-2016::15:37:36 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=WARNING REPORT==== 10-Feb-2016::15:37:46 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=WARNING REPORT==== 10-Feb-2016::15:37:56 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=WARNING REPORT==== 10-Feb-2016::15:38:06 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=WARNING REPORT==== 10-Feb-2016::15:38:16 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=WARNING REPORT==== 10-Feb-2016::15:38:26 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=WARNING REPORT==== 10-Feb-2016::15:38:36 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=WARNING REPORT==== 10-Feb-2016::15:38:46 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=WARNING REPORT==== 10-Feb-2016::15:38:56 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=WARNING REPORT==== 10-Feb-2016::15:39:07 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=WARNING REPORT==== 10-Feb-2016::15:39:17 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=INFO REPORT==== 10-Feb-2016::15:39:24 ===
+         ts_launcher:(4:<0.127.0>) Need to wait 11.634 sec before changing phase, going to sleep
+
+=WARNING REPORT==== 10-Feb-2016::15:39:27 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=INFO REPORT==== 10-Feb-2016::15:39:36 ===
+         ts_launcher:(5:<0.127.0>) Waking up
+
+=INFO REPORT==== 10-Feb-2016::15:39:36 ===
+         ts_launcher:(5:<0.127.0>) Start a new arrival phase (100 users, 0.01); expected duration=120.0 sec
+
+=WARNING REPORT==== 10-Feb-2016::15:39:37 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=INFO REPORT==== 10-Feb-2016::15:39:45 ===
+         ts_launcher:(4:<0.127.0>) Need to wait 110.081 sec before changing phase, going to sleep
+
+=WARNING REPORT==== 10-Feb-2016::15:39:47 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=WARNING REPORT==== 10-Feb-2016::15:39:57 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=WARNING REPORT==== 10-Feb-2016::15:40:07 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=WARNING REPORT==== 10-Feb-2016::15:40:17 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=WARNING REPORT==== 10-Feb-2016::15:40:27 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=WARNING REPORT==== 10-Feb-2016::15:40:37 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=WARNING REPORT==== 10-Feb-2016::15:40:47 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=WARNING REPORT==== 10-Feb-2016::15:40:57 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=WARNING REPORT==== 10-Feb-2016::15:41:07 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=WARNING REPORT==== 10-Feb-2016::15:41:17 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=WARNING REPORT==== 10-Feb-2016::15:41:27 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=INFO REPORT==== 10-Feb-2016::15:41:36 ===
+         ts_launcher:(5:<0.127.0>) Waking up
+
+=INFO REPORT==== 10-Feb-2016::15:41:36 ===
+         ts_launcher:(5:<0.127.0>) Start a new arrival phase (15 users, 2.5e-4); expected duration=60.0 sec
+
+=WARNING REPORT==== 10-Feb-2016::15:41:38 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=WARNING REPORT==== 10-Feb-2016::15:41:48 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=WARNING REPORT==== 10-Feb-2016::15:41:58 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS

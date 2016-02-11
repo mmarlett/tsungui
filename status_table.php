@@ -18,7 +18,7 @@ if (isset($_POST['testplan']) && ($_POST['testplan']) && isset($_POST['action'])
 <body>
 <div class='page'>
 		<h3>Status</h3>
-		<table class="list-table" style="margin:0">
+		<table class="list-table">
 			<thead>
 				<tr>
 					<th>Test plan</th>
@@ -38,11 +38,21 @@ if (isset($_POST['testplan']) && ($_POST['testplan']) && isset($_POST['action'])
 					} else {
 						while ($row = $res->fetch_array(MYSQLI_ASSOC))
 						{
-							echo "<tr><td colspan='5'>&nbsp;</td></tr>";
-							echo "<tr class='ro'>";
-							echo "<td>".$row['template']."</td>";
-							echo "<td>".$row['id']."</td>";
-							echo "<td><b>".strtoupper($row['status'])."</b></td>";
+							echo '<tr class="ro">';
+							echo '<td><b class="title">';
+							echo $row['template'];
+							echo '</b></td>';
+							echo '<td>';
+							echo $row['id'];
+							echo '</td>';
+							echo '<td><b>';
+							if ($row['status'] == 'waiting')
+							{
+								echo '<div class="spinner-bar" > </div>';
+							}else{
+								echo strtoupper($row['status']);
+							}
+							echo '</b></td>';
 							echo "<td>".$row['comment']."</td>";
 							if ($row['status'] !== 'canceled'){
 								echo "<td><a href='?action=cancel&id=".$row['id']."'>Cancel</a></td>";

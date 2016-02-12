@@ -10,15 +10,66 @@
 define('sntmedia_TSUNG_UI', true);
 require('config.inc.php');
 $tsungUI = new sntmedia_tsungUI();                                
+
 if (isset($_POST['testplan']) && ($_POST['testplan']) && isset($_POST['action']) && ($_POST['action']=='run')){
 	$tsungUI->addTestplan($_POST['testplan'],$_POST['comment']);
 }
+
 if (isset($_GET['action']) && isset($_GET['id']))
 {
-	if ($_GET['action'] == 'archive'){
-		$tsungUI->archiveReport($_GET['id']);
+	switch($_GET['action']) {
+		case 'archive':
+			$tsungUI->archiveReport($_GET['id']);
+		break;
+		case 're-run':
+			if (isset($_GET['startdate']) && ($_GET['startdate'])){
+				$plan =  $tsungUI->getTestplanByStartdate($_GET['startdate']);
+				if (isset ($plan['template'])){
+					$tsungUI->addTestplan($plan['template'],'A re-run of '.$plan['template'].' at '.$_GET['startdate']);
+				}
+			}elseif(isset($_GET['template']) && (in_array($_GET['template'], $testplan_list))){
+				$tsungUI->addTestplan($_GET['template'],'A re-run of '.$_GET['template']);
+			}
+		break;
+		case 'trash':
+			$tsungUI->deleteReport($_GET['id']);
+		break;
+		
 	}
 }
+
+$order = 'DESC';// ASC or DESC
+if (isset ($_GET['order']))
+{
+	if (($_GET['order']=='ASC') || ($_GET['order']=='DESC'))
+	{
+		$order = $_GET['order'];
+	}
+}
+
+$type = '';// completed, active, archived
+if (isset ($_GET['type']))
+{
+	$type = urldecode($_GET['type']);
+}
+
+$search = '';
+if (isset($_GET['search']))
+{
+	$search = urldecode($_GET['search']);
+}
+
+$search_filter = '';
+if (isset($_GET['search_filter']))
+{
+	$search_filter = urldecode($_GET['search_filter']);
+}
+
+$action = '';
+if (isset($_GET['action'])){
+	$action = urldecode($_GET['action']);
+}
+
 
 $testplan_list = $tsungUI->getTestplanList();
 ?>

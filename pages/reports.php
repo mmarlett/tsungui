@@ -28,6 +28,17 @@ if (isset ($_GET['type']))
 	}
 }
 
+$search = '';
+if (isset($_GET['search']))
+{
+	$search = urldecode($_GET['search']);
+}
+
+$search_filter = '';
+if (isset($_GET['search_filter']))
+{
+	$search_filter = urldecode($_GET['search_filter']);
+}
 
 
 if ($subdir && $dir){
@@ -57,13 +68,29 @@ if ($subdir && $dir){
       <div class="section"><label>Show:</label>
     	<div class="btn-group btn-group-sm">
     	
-    	<a class="btn btn-default<?php if ($type == ''){echo ' active';} ?>" href="?page=reports&amp;type=completed<?php if ($order){echo '&amp;order='.$order;} ?>">Completed <span class="completed-count">(<?php
+    	<a class="btn btn-default<?php if ($type == ''){echo ' active';} ?>" href="?page=reports&amp;type=completed<?php 
+	if ($order){
+		echo '&amp;order='.$order;
+	}
+	if ($search){
+		echo '&amp;search='.urlencode($search);
+	}
+	if ($search_filter){
+		echo '&amp;search_filter='.urlencode($search_filter);
+	}
+   	?>">Completed <span class="completed-count">(<?php
     	echo $tsungUI->getReportCount('finished');// echo $completed_count;
     	?>)</span></a>
 	<a class="btn btn-default<?php
 	if ($type == 'active'){echo ' active';}
 	?>" href="?page=reports&amp;type=active<?php
 	if ($order){echo '&amp;order='.$order;}
+	if ($search){
+		echo '&amp;search='.urlencode($search);
+	}
+	if ($search_filter){
+		echo '&amp;search_filter='.urlencode($search_filter);
+	}
 	?>">Active <span class="active-count">(<?php
 	echo $tsungUI->getReportCount('active'); // echo $testplan_count;
 	?>)</span></a>
@@ -71,6 +98,12 @@ if ($subdir && $dir){
     	if ($type == 'archived'){echo ' active';}
     	?>" href="?page=reports&amp;type=archived<?php
     	if ($order){echo '&amp;order='.$order;}
+		if ($search){
+			echo '&amp;search='.urlencode($search);
+		}
+		if ($search_filter){
+			echo '&amp;search_filter='.urlencode($search_filter);
+		}
     	?>">Archived <span class="archived-count">(<?php
     	 echo $tsungUI->getReportCount('archived');// echo $archived_count;
     	 ?>)</span></a>
@@ -78,39 +111,61 @@ if ($subdir && $dir){
     </div>
 	<div class="section"><label>Sort:</label>
 		<div class="btn-group btn-group-sm">
-			<a class="btn btn-default<?php if ($order == 'DESC'){echo ' active';} ?>" href="?page=reports<?php if ($type){echo '&amp;type='.$type;} ?>&amp;order=DESC">Newest</a>
-			<a class="btn btn-default<?php if ($order == 'ASC'){echo ' active';} ?>" href="?page=reports<?php if ($type){echo '&amp;type='.$type;} ?>&amp;order=ASC">Oldest</a>
+			<a class="btn btn-default<?php if ($order == 'DESC'){echo ' active';} ?>" href="?page=reports<?php 
+		if ($type){
+			echo '&amp;type='.$type;
+		}
+		if ($search){
+			echo '&amp;search='.urlencode($search);
+		}
+		if ($search_filter){
+			echo '&amp;search_filter='.urlencode($search_filter);
+		}
+		?>&amp;order=DESC">Newest</a>
+			<a class="btn btn-default<?php if ($order == 'ASC'){echo ' active';} ?>" href="?page=reports<?php 
+		if ($type){
+			echo '&amp;type='.$type;
+		}
+		if ($search){
+			echo '&amp;search='.urlencode($search);
+		}
+		if ($search_filter){
+			echo '&amp;search_filter='.urlencode($search_filter);
+		}
+			?>&amp;order=ASC">Oldest</a>
 		</div>
 	</div>
       <div class="section search">
         <label>Search: </label>
         <div class="input-wrapper">
-          <form action="?page=tests" method="get" id="search-box">
+          <form method="get" id="search-box">
             <div class="form-group has-feedback">
-              <input type="hidden" name="type" value="">
+			<input type="hidden" name="page" value="reports">
               <div class="input-group">
                  <div class="input-group-btn">
                   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-filter"></i></button>
                     <ul id='filter-dropdown' class="dropdown-menu dropdown-menu-form" role="menu">
                       <li role="presentation" class="dropdown-header">Filter search by:</li>
                       <li>
-                        <div class="radio"><label><input checked="checked" id="search_filter_all" name="search_filter" type="radio" value="all" />All</label></div>
+                        <div class="radio"><label><input <?php if (($search_filter == 'all') || ($search_filter == '')){ echo ' checked="checked"';} ?> id="search_filter_all" name="search_filter" type="radio" value="all" />All</label></div>
                       </li>
                       <li>
-                        <div class="radio"><label><input id="search_filter_tests" name="search_filter" type="radio" value="tests" />Name</label></div>
+                        <div class="radio"><label><input <?php if ($search_filter == 'names'){ echo ' checked="checked"';} ?> id="search_filter_tests" name="search_filter" type="radio" value="names" />Names</label></div>
                       </li>
                       <li>
-                        <div class="radio"><label><input id="search_filter_urls" name="search_filter" type="radio" value="urls" />URL</label></div>
+                        <div class="radio"><label><input <?php if ($search_filter == 'urls'){ echo ' checked="checked"';} ?> id="search_filter_urls" name="search_filter" type="radio" value="urls" />URLs</label></div>
                       </li>
                       <li>
-                        <div class="radio"><label><input id="search_filter_tags" name="search_filter" type="radio" value="tags" />Tag</label></div>
+                        <div class="radio"><label><input <?php if ($search_filter == 'profile'){ echo ' checked="checked"';} ?> id="search_filter_tags" name="search_filter" type="radio" value="profile" />Profiles</label></div>
                       </li>
                       <li>
-                        <div class="radio"><label><input id="search_filter_notes" name="search_filter" type="radio" value="notes" />Notes</label></div>
+                        <div class="radio"><label><input <?php if ($search_filter == 'notes'){ echo ' checked="checked"';} ?> id="search_filter_notes" name="search_filter" type="radio" value="notes" />Notes</label></div>
                       </li>
                     </ul>
                   </div><!-- /btn-group -->
-                <input type="text" id="search-box" class="form-control typeahead first" name="search" placeholder="Search for tests, urls, tags, and notes" value="">
+                <input type="text" id="search-box" class="form-control typeahead first" name="search" placeholder="Search for tests, urls, tags, and notes" value="<?php echo $search; ?>">
+			<input type="hidden" name="type" value="<?php echo $type; ?>">
+			<input type="hidden" name="order" value="<?php echo $order; ?>">
                 <span class="input-group-btn go-search-buttom">
                   <button class="btn btn-default" type="submit">Go!</button>
                 </span>
@@ -139,10 +194,17 @@ if ($subdir && $dir){
 
 	
 		<?php
-			$report_list = $tsungUI->getTestplanReports($order, $type);
+			if ($search){
+				$report_list = $tsungUI->searchReports($search, $search_filter, $order, $type);
+			}else{
+				$report_list = $tsungUI->getTestplanReports($order, $type);
+			}
 //			echo '<pre>';
 //			print_r($report_list);
 //				echo '</pre>';
+		if (isset ($report_list['nope'])){
+				echo '<tr><td colspan="6">Nothing found. '.$report_list['nope'].'</td></tr>';
+		}else{
 		foreach ($report_list as $report){
 				$info = $tsungUI->getTestInfoByPath($report['template'], $report['starttime']);
 				echo '<tr><td><a href="?page=reports&config=';
@@ -150,7 +212,7 @@ if ($subdir && $dir){
 				echo '&starttime=';
 				$report['starttime'] = urlencode($report['starttime']);
 				echo $report['starttime'];
-				echo '><b class="title">';
+				echo '"><b class="title">';
 				echo (str_replace('_',' ',$report['template']));
 				echo '</b></a></td>';
 				echo '<td>';
@@ -202,6 +264,7 @@ if ($subdir && $dir){
 ';
 
 			}
+		}
 		?>
 	
 	</tbody>

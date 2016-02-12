@@ -32,6 +32,7 @@ class sntmedia_tsungUI {
 		self::$CONFIG['pages']['status'] = 'Status';
 		self::$CONFIG['pages']['reports'] = 'Reports';
 		self::$CONFIG['pages']['tests'] = 'Tests';
+		self::$CONFIG['pages']['new_test'] = 'New Test';
 	
 		if (isset($_GET['page']) && ($_GET['page']) && isset(self::$CONFIG['pages'][$_GET['page']])){
 			$this->current_page = $_GET['page'];
@@ -50,11 +51,11 @@ class sntmedia_tsungUI {
 			$order = 'ASC';
 		}
 		//look in the db for the test plans
-		$query = "SELECT DISTINCT `name` FROM `tsung_config_templates` ORDER BY `name` $order";
+		$query = "SELECT DISTINCT `_name` FROM `tsung_config_templates` ORDER BY `_name` $order";
 		if ($res = $this->_link->query($query))
 		{
 			while ($row = $res->fetch_array(MYSQLI_ASSOC)){
-				$testplan_list[] = $row['name'];
+				$testplan_list[] = $row['_name'];
 			}
 		}
 		//Using db instead of file system 
@@ -86,12 +87,121 @@ class sntmedia_tsungUI {
 	
 	}
 
+	public function getTestCount($type){
+		switch($type) {
+			case 'active':
+				$where =  '(`_status` = \'active\') || (`_status` = \'completed\') || (`_status` = \'scheduled\') ';
+			break;
+			case 'completed':
+				$where =  '`_status` = \'completed\'';
+			break;
+			case 'draft':
+				$where =  '`_status` = \'draft\'';
+			break;
+			case 'scheduled':
+				$where =  '`_status` = \'scheduled\'';
+			break;
+			case 'archived':
+				$where =  '`_status` = \'archived\'';
+			break;
+			default;
+				$where =  '`_status` is 1';
+			break;
+		}
+	
+		$query = "SELECT count(`id`) AS count FROM `tsung_config_templates` WHERE $where;";
+		$res = $this->_link->query($query);
+		$row = $res->fetch_array(MYSQLI_ASSOC);
+		return ($row['count']);
+	
+	}
+	
+	public function searchReports($search, $search_filter = '', $order = '', $type = ''){
+		$search = $this->_link->real_escape_string(urldecode($search));
+		$search_filter = $this->_link->real_escape_string(urldecode($search_filter));
+		
+		if (($order != 'ASC') && ($order != 'DESC')){ //don't let anything else in
+			$order = 'ASC';
+		}
+
+		switch($type) {
+			case 'archived':
+				$where =  '`status` = \'archived\'';
+			break;
+			case 'active':
+				$where =  '`status` = \'running\'';
+			break;
+			default;
+				$where =  '`status` = \'finished\'';
+			break;
+		}
+		
+		switch($search_filter) {
+			case 'names':
+				$where .=  ' AND `tsung_statusinfo`.`template` LIKE \'%'.$search.'%\'';
+			break;
+			case 'urls':
+				$where .=  ' AND `tsung_statusinfo`.`urls` LIKE \'%'.$search.'%\'';
+			break;
+			case 'profiles':
+				$where .= ' AND `tsung_statusinfo`.`profile` LIKE \'%'.$search.'%\'';
+			break;
+			case 'notes':
+				$where .= ' AND `tsung_statusinfo`.`comment` LIKE \'%'.$search.'%\'';
+			break;
+			default;
+				$where .= ' AND (`tsung_statusinfo`.`template` LIKE \'%'.$search.'%\') OR (`tsung_statusinfo`.`urls` LIKE \'%'.$search.'%\') OR (`tsung_statusinfo`.`profile` LIKE \'%'.$search.'%\') OR (`tsung_statusinfo`.`comment` LIKE \'%'.$search.'%\')';
+			break;
+		}
+		$report_list = array();
+	
+		$query = "SELECT * FROM `tsung_statusinfo` WHERE $where ORDER BY `started_at` $order;";
+		if ($res = $this->_link->query($query)){
+			while ($row = $res->fetch_array(MYSQLI_ASSOC))
+			{
+				$report_list[] = $row;
+				$path = $row['template'].'/log/'.$row['starttime'];
+				if (file_exists(sntmedia_PATH_TEMPLATES.$path.'report.html'))
+				{
+					$row['path'] = $path;
+					$report_list[] = $row;
+				}
+			}
+		}else{
+			$report_list['nope'] = $query;
+		}
+		return $report_list;
+	}
+
 	public function archiveReport($id){
 		if (is_numeric($id)){
 			$query = "UPDATE `tsung_statusinfo` SET `status` = 'archived' WHERE `tsung_statusinfo`.`id` = '{$id}';";
 			$res = $this->_link->query($query);
 		}
 	}
+
+	/**
+	*Delete log Directory
+	*
+	* @param string id
+	* @return void
+	**/
+	public function deleteReport($id){
+		if (is_numeric($id)){
+			$query = "SELECT `template`, `starttime` FROM `tsung_statusinfo` WHERE `id` = '{$id}'";
+			$this->_link->query($query);
+			$res = $this->_link->query($query);
+			$row = $res->fetch_array(MYSQLI_ASSOC);
+			$dir = dirname(__FILE__).'/templates/'.$row['template'].'/log/'.$row['starttime'].'/';
+			if (is_dir($dir)){
+				$this->deletePath($dir);
+			}
+			$query = "DELETE FROM `tsung_statusinfo` WHERE `tsung_statusinfo`.`id` = '{$id}';";
+			$res = $this->_link->query($query);
+
+		}
+	}
+
 
 	/**
 	* Get List of possible Reports (each report should be in a directory in templates/testname/log)
@@ -282,24 +392,6 @@ class sntmedia_tsungUI {
 		}
 		return $r;
 	}
-
-	/**
-	*Delete log Directory
-	*
-	* @param string id
-	* @return void
-	**/
-	public function deleteTestLog($id){
-		$id = (int) $id;
-		$query = "SELECT `template`, `starttime` FROM tsung_statusinfo WHERE id = '{$id}'";
-		$this->_link->query($query);
-		$res = $this->_link->query($query);
-		$row = $res->fetch_array(MYSQLI_ASSOC);
-		$dir = dirname(__FILE__).'/templates/'.$row['template'].'/log/'.$row['starttime'].'/';
-		$this->unlinkRecursive($dir, $dir);
-		$query = "DELETE FROM tsung_statusinfo WHERE `id` = '{$id}'";
-		$this->_link->query($query);
-	}
 	
 	/** 
 	* Recursively delete a directory 
@@ -307,34 +399,25 @@ class sntmedia_tsungUI {
 	* @param string $dir Directory name 
 	* @param boolean $deleteRootToo Delete specified top-level directory as well 
 	*/ 
-	private function unlinkRecursive($dir, $deleteRootToo)
+	private function deletePath($path)
 	{
-		if(!$dh = @opendir($dir)) 
-		{ 
-			return; 
-		} 
-		while (false !== ($obj = readdir($dh))) 
-		{ 
-			if($obj == '.' || $obj == '..') 
-			{ 
-				continue; 
-			} 
-
-			if (!@unlink($dir . '/' . $obj)) 
-			{ 
-				$this->unlinkRecursive($dir.'/'.$obj, true); 
-			} 
-		} 
-
-		closedir($dh); 
-	
-		if ($deleteRootToo) 
-		{ 
-			@rmdir($dir); 
-		} 
-	
-		return; 
+		if (is_dir($path) === true)
+		{
+			$files = array_diff(scandir($path), array('.', '..'));
+			foreach ($files as $file)
+			{
+				$this->deletePath(realpath($path) . '/' . $file);
+			}
+			return rmdir($path);
+		}
+		else if (is_file($path) === true)
+		{
+			return unlink($path);
+		}
+		return false;
 	}
+
+	
 
 	/**************
 	*

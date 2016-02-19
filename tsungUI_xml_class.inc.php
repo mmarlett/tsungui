@@ -18,6 +18,7 @@ class tsungUI_XML {
 	* @param string parent_table
 	* @return array
 	*/
+	/*
 	public function getChildren($parent_table)
 	{
 		$parent_table = $this->_link->real_escape_string($parent_table);
@@ -32,6 +33,7 @@ class tsungUI_XML {
 			return $table_names;
 		}
 	}
+	*/
 
 	/**
 	* Get table row by parent id 
@@ -134,7 +136,7 @@ class tsungUI_XML {
 	{
 		if (isset ($parent_row['id']))
 		{
-			$children = $this->getChildren($table_name); //get the tables pointing to this table
+			$children = $this->getTsungConfigMap($table_name); //get the tables pointing to this table
 			$parent_id = $parent_row['id']; //preserve the id before taking it out of the array
 			$parent_row = $this->cleanForXML($parent_row);
 			foreach ($children as $child_name)
@@ -142,10 +144,10 @@ class tsungUI_XML {
 				$parent_row[$child_name] = $this->getChildRow($child_name, $parent_id); //
 				$parent_row[$child_name] = $this->recursiveChildren($child_name, $parent_row[$child_name]);
 			}
-		}else{ 
+		}elseif(is_array($parent_row)){ 
 			foreach ($parent_row as $key => $this_row)
 			{
-				$children = $this->getChildren($table_name); //get the tables pointing to this table
+				$children = $this->getTsungConfigMap($table_name); //get the tables pointing to this table
 				$parent_id = $this_row['id']; //preserve the id before taking it out of the array
 				$parent_row[$key] = $this->cleanForXML($this_row);
 				foreach ($children as $child_name)
@@ -166,22 +168,23 @@ class tsungUI_XML {
 	
 	public function getTsungConfig($id){
 		$id = $this->_link->real_escape_string($id);
-		$query = "SELECT * FROM `tsung_config_templates` WHERE `id` = '{$id}' LIMIT 1";
+		$query = "SELECT * FROM `tsung_tsung` WHERE `id` = '{$id}' LIMIT 1";
 		$xml = '<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE tsung SYSTEM "'.dirname(__file__).'/tsung-1.0.dtd">';
 		if ($res = $this->_link->query($query))
 		{
 			$row = $res->fetch_array(MYSQLI_ASSOC);
 			if ($row)
-			{	
-				$row = $this->recursiveChildren('tsung_config_templates', $row);
+			{
+				$row = $this->recursiveChildren('tsung_tsung', $row);
 				$xml .= $this->makeThisXML($row, 'tsung');
+				$pattern = '/ _([a-z_]+)="(.*?)"/i';
+				$xml = preg_replace($pattern, '', $xml);
 				return $xml;
 			}
 		}
 	}
 
-}
 
 	/**
 	* A set of static arrays that will return an ordered array to tell you which 
@@ -194,10 +197,10 @@ class tsungUI_XML {
 	In an ideal world, this would be dynamic, but tsung's XML requirements are too ridged
 	*/
 
-	public function getTsungConfigMap($parent_table='tsung_config_templates'){
+	public function getTsungConfigMap($parent_table='tsung_tsung'){
 		switch($parent_table) {
-			case 'tsung_config_templates':
-				$children = array('tsung_clients','tsung_servers','tsung_monitors','tsung_load','tsung_sessions','tsung_options');
+			case 'tsung_tsung':
+				$children = array('tsung_information','tsung_clients','tsung_servers','tsung_monitoring','tsung_load','tsung_options','tsung_sessions');
 			break;
 			//first level children
 			case 'tsung_clients':
@@ -231,7 +234,7 @@ class tsungUI_XML {
 				$children = array('tsung_users', 'tsung_session_setup');
 			break;
 			case 'tsung_session':
-				$children = array('tsung_thinktime', 'tsung_request', 'tsung_transaction'); //tsung_change_type , tsung_for
+				$children = array('tsung_request','tsung_thinktime','tsung_transaction','tsung_setdynvars','tsung_for','tsung_repeat','tsung_if','tsung_change_type','tsung_foreach','tsung_set_option','tsung_interaction'); //tsung_change_type , tsung_for
 			break;
 			case 'tsung_option':
 				$children = array('tsung_user_agent');
@@ -241,14 +244,17 @@ class tsungUI_XML {
 			
 			//third level children
 			case 'tsung_request':
-				$children = array('tsung_http', 'tsung_mysql', 'tsung_websocket', 'tsung_dyn_variable', 'tsung_match'); //tsung_jabber, tsung_raw, tsung_ldap, tsung_mqtt
+				$children = array('tsung_match','tsung_dyn_variable','tsung_http','tsung_jabber','tsung_raw','tsung_pgsql','tsung_ldap','tsung_mysql','tsung_fs','tsung_shell','tsung_job','tsung_websocket','tsung_amqp','tsung_mqtt'); //tsung_jabber, tsung_raw, tsung_ldap, tsung_mqtt
 			break;
 
+			case 'tsung_transaction':
+				$children = array('tsung_request','tsung_setdynvars','tsung_thinktime','tsung_for','tsung_repeat','tsung_if','tsung_foreach','tsung_interaction');
+			break;
 			
 			
 			//fourth level children
 			case 'tsung_http':
-				$children = array('tsung_add_cookie', 'tsung_http_header', 'tsung_oauth', 'www_authenticate');
+				$children = array('tsung_oauth', 'tsung_www_authenticate', 'tsung_soap', 'tsung_http_header', 'tsung_add_cookie');
 			break;
 			
 			
@@ -259,17 +265,47 @@ class tsungUI_XML {
 		return $children;
 	}
 
-/*Unemplimented 
-tsung_for {can nest another for} (from="1" to="10" incr="1" var="loops")
-tsung_change_type (new_type="ts_http" host="foo.bar" port="80" server_type="tcp" store="true" bidi="true")
-tsung_jabber (type="chat" ack="no_ack" size="16" destination="previous")
-tsung_xmpp_authenticate (username="%%_username%%" passwd="%%_password%%")
-tsung_raw (data="BYEBYE" datasize="2048" ack="local")
-tsung_ldap
-tsung_setdynvars (sourcetype="file"  fileid="users" delimiter=";" order="iter" (type:random_string) length="10" (type:random_number) start="1" end="100" (type='muc:join') ack="local" room="room%%_room%%" nick="%%_nick1%%" size="16" )
-tsung_var (name="username")
-tsung_mqtt (type="connect" clean_start="true" keepalive="10" will_topic="will_topic" will_qos="0" will_msg="will_msg" will_retain="false" topic="test_topic" qos="1" retained="true"  timeout="60")
-tsung_amqp (type="basic.consume" vhost="/" channel="%%_loops%%" queue="test_queue" ack="true"  timeout="60")
-*/
+	/*Unemplimented ConfigMap parts
+	tsung_for {can nest another for} (from="1" to="10" incr="1" var="loops")
+	tsung_change_type (new_type="ts_http" host="foo.bar" port="80" server_type="tcp" store="true" bidi="true")
+	tsung_jabber (type="chat" ack="no_ack" size="16" destination="previous")
+	tsung_xmpp_authenticate (username="%%_username%%" passwd="%%_password%%")
+	tsung_raw (data="BYEBYE" datasize="2048" ack="local")
+	tsung_ldap
+	tsung_setdynvars (sourcetype="file"  fileid="users" delimiter=";" order="iter" (type:random_string) length="10" (type:random_number) start="1" end="100" (type='muc:join') ack="local" room="room%%_room%%" nick="%%_nick1%%" size="16" )
+	tsung_var (name="username")
+	tsung_mqtt (type="connect" clean_start="true" keepalive="10" will_topic="will_topic" will_qos="0" will_msg="will_msg" will_retain="false" topic="test_topic" qos="1" retained="true"  timeout="60")
+	tsung_amqp (type="basic.consume" vhost="/" channel="%%_loops%%" queue="test_queue" ack="true"  timeout="60")
+	*/
+
+	/**
+	* Get test Config from database 
+	* @param string id
+	* @return array
+	*/
+	
+	public function buildTsungConfig($id){
+		$id = $this->_link->real_escape_string($id);
+		$query = "SELECT * FROM `tsung_tsung` WHERE `id` = '{$id}' LIMIT 1";
+		$xml = '<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE tsung SYSTEM "'.dirname(__file__).'/tsung-1.0.dtd">';
+		if ($res = $this->_link->query($query))
+		{
+			$row = $res->fetch_array(MYSQLI_ASSOC);
+			if ($row)
+			{
+				$row = $this->recursiveChildren('tsung_tsung', $row);
+				$xml .= $this->makeThisXML($row, 'tsung');
+				$pattern = '/ _([a-z_]+)="(.*?)"/i';
+				$xml = preg_replace($pattern, '', $xml);
+				return $xml;
+			}
+		}
+	}
+
+
+
+
+}
 
 ?>

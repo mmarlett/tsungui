@@ -1,0 +1,135 @@
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+    ts_config_server:(5:<0.69.0>) Config server started, logdir is "/Library/WebServer/Documents/tsungui/templates/apirt_synapsys_us-weather/log/20160218-1515"
+ 
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+              ts_mon:(5:<0.50.0>) starting monitor, global 
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+           ts_config:(5:<0.69.0>) Reading config file: /Library/WebServer/Documents/tsungui/templates/apirt_synapsys_us-weather/config.xml
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+      ts_config_http:(4:<0.69.0>) Get user agent: 80 "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.8) Gecko/20050513 Galeon/1.3.21" 
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+      ts_config_http:(4:<0.69.0>) Get user agent: 20 "Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4" 
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+           ts_config:(5:<0.69.0>) Session name for id 1 is "http-example"
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+    ts_config_server:(4:<0.69.0>) SYSINFO:Tsung version: 1.6.0
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+    ts_config_server:(4:<0.69.0>) SYSINFO:Erlang version: Erlang/OTP 18 [erts-7.2.1] [source] [64-bit] [smp:4:4] [async-threads:8] [hipe] [kernel-poll:true] [dtrace]
+
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+    ts_config_server:(4:<0.69.0>) SYSINFO:System architecture x86_64-apple-darwin15.2.0
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+    ts_config_server:(4:<0.69.0>) SYSINFO:Current path: /usr/local/Cellar/tsung/1.6.0/lib/erlang/lib/tsung-1.6.0/ebin/tsung.beam
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+       ts_job_notify:(6:<0.81.0>) No listen port defined, can't open listening socket (don't worry: it's normal if you don't use job notifications) 
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+    ts_os_mon_erlang:(6:<0.90.0>) Running os_mon on the same host as the controller, use the same beam
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+              ts_mon:(5:<0.70.0>) Activate clients with text backend
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+              ts_mon:(5:<0.70.0>) Starting tsung clients on hosts: [localhost]
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+    ts_config_server:(5:<0.69.0>) Start a launcher on the controller beam localhost
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+              ts_sup:(6:<0.118.0>) starting supervisor ...
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+              ts_sup:(6:<0.119.0>) starting
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+          ts_ip_scan:(6:<0.120.0>) Starting 
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+     ts_launcher_mgr:(6:<0.121.0>) starting
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+    ts_session_cache:(6:<0.119.0>) Starting
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+        ts_mon_cache:(6:<0.119.0>) Starting
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+        ts_local_mon:(6:<0.119.0>) Starting
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+       ts_client_sup:(6:<0.125.0>) Starting 
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+  ts_launcher_static:(6:<0.119.0>) starting 
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+         ts_launcher:(6:<0.119.0>) starting 
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+    ts_config_server:(6:<0.69.0>) Application started, activate launcher, 
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+  ts_launcher_static:(6:<0.69.0>) starting on node ['tsung_controller_116@Wonko-the-Sane']
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+         ts_launcher:(6:<0.69.0>) starting on node ['tsung_controller_116@Wonko-the-Sane']
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+  ts_launcher_static:(5:<0.126.0>) Launch msg receive ("localhost")
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+         ts_launcher:(5:<0.127.0>) Launch msg receive ("localhost")
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+     ts_launcher_mgr:(6:<0.121.0>) syncing already done, skip
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+              ts_mon:(6:<0.70.0>) A launcher has started
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+    ts_config_server:(5:<0.69.0>) All remote beams started, syncing 
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+    ts_config_server:(5:<0.69.0>) Undefined ports_range config 
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+    ts_config_server:(5:<0.69.0>) New arrival phase 1 for client "localhost" (last ? true): will start 15 users
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+    ts_config_server:(5:<0.69.0>) New arrival phase 2 for client "localhost" (last ? true): will start 100 users
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+    ts_config_server:(5:<0.69.0>) New arrival phase 3 for client "localhost" (last ? true): will start 100 users
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+  ts_launcher_static:(6:<0.126.0>) No static users, stop
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+  ts_launcher_static:(6:<0.126.0>) launcher terminating for reason normal
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+         ts_launcher:(5:<0.127.0>) Expected duration of first phase: 60.0 sec (15 users) 
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+    alarm_handler: {set,{system_memory_high_watermark,[]}}
+
+=WARNING REPORT==== 18-Feb-2016::15:15:00 ===
+OS_MON (cpu_sup), util/1 unavailable for this OS
+
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+         ts_launcher:(5:<0.127.0>) Can't get file descriptors limit from system, you should verify that 'maxusers' has a good value 
+=INFO REPORT==== 18-Feb-2016::15:15:00 ===
+         ts_launcher:(5:<0.127.0>) Activate launcher (15 users) in 2632 msec 
+
+=INFO REPORT==== 18-Feb-2016::15:15:03 ===
+    ts_config_server:(6:<0.69.0>) Session 1 chosen
+
+=INFO REPORT==== 18-Feb-2016::15:15:03 ===
+           ts_client:(6:<0.133.0>) Session ending 

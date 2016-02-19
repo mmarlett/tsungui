@@ -1,0 +1,4 @@
+[17/Feb/2016:10:55:11 -0600] access to /favicon.ico failed for 127.0.0.1, reason: 
+"httpd_file: Can't access /Library/WebServer/Documents/tsungui/templates/apirt.synapsys.us-weather/log/20160217-1053/favicon.ico: File not found"
+[17/Feb/2016:10:55:11 -0600] access to /assets/ico/favicon.ico failed for 127.0.0.1, reason: 
+"httpd_file: Can't access /Library/WebServer/Documents/tsungui/templates/apirt.synapsys.us-weather/log/20160217-1053/assets/ico/favicon.ico: File not found"

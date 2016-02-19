@@ -4,12 +4,13 @@ if (isset($_GET['action']) && ($_GET['action']==='cancel')){
 	$tsungUI->cancelTestplan($_GET['id']);
 }
 if (isset($_GET['action']) && ($_GET['action']==='delete')){
-	$tsungUI->deleteTestLog($_GET['id']);
+	$tsungUI->deleteReport($_GET['id']);
 }
 //print_r($_POST);
 ?>
-<main>
+<main onload(statusupdate);>
 <div class="page">
+<div class="container">
 <div class="clearfix">
 <h2 class="pull-left">Run test</h2>
 <a href="?page=tests&amp;action=new" class="pull-right btn-main btn-big"><span class="glyphicon glyphicon-plus"></span> New Test</a>
@@ -38,11 +39,16 @@ echo "<option value='$plan'>$plan</option>";
 </div>
 </form>
 </div>
+<script >
+var statusupdate = function(){
+	$('#status-table').load('status_table.php');
+}
+setInterval(statusupdate, 2000); // run it every 2 seconds
+</script>
 
-<div class="form-panel">
-<iframe src="<?php echo sntmedia_TOP_PATH; ?>status_table.php" frameborder="0" style="width:100%; display:table;" scrolling="no" onload="resizeIframe(this)"/>
+<div class="form-panel" id="status-table" name="status-table" >
+</div>
 </div>
 </div>
 </div>
 </main>
-

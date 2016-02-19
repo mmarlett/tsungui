@@ -1,7 +1,7 @@
 <?php
 /**
 * blueend.com - TSUNG GUI
-* @version 0.2
+* @version 0.3
 * @author blueend.com
 * @license free as in beer
 * 
@@ -13,7 +13,7 @@ $tsungUI = new sntmedia_tsungUI();
 
 // Tsung Controller CRON
 echo "Checking for running TSUNG processes ...\n";
-$cmd = "ps ax | grep -e 'tsung ' | cut -c1-5";
+$cmd = "ps ax | grep -e 'tsung ' | cut -c1-5"; //grep -P for GNU grep; grep -e for BSD grep
 $r = shell_exec($cmd);
 $pids = explode('\n', $r);
 
@@ -31,17 +31,17 @@ if ($res = $mysqli->query($sql)){
 		$pid = posix_getppid();
 		$gid = posix_getpgid($pid);
 
-		$starttime = date('Ymd-Hi');
+		$starttime = date('Ymd-Hi'); //change date format to be more universally file friendly
 		$tsungUI->updateStatus($row['id'], 'running', $starttime, $gid);
-		set_time_limit(99999);         
-		$dir = sntmedia_PATH_TEMPLATES.$row['template'].'/';
+		set_time_limit(99999);
+		$dir = sntmedia_PATH_TEMPLATES.$tsungUI->escapeName($row['template']).'/';
 		
 		// 1. Run TSUNG
-		echo "Running TSUNG for $starttime\n";
-		$cmd = 'cd "'.$dir.'"; nohup tsung -f config.xml -l log -i '.$row['id'].' start > /dev/null & echo $!';
+		echo "Running TSUNG for {$starttime}:\n";
+		$cmd = 'cd '.$dir.'; nohup tsung -f config.xml -l log -i '.$row['id'].' start > /dev/null & echo $!';
 		$pid = shell_exec($cmd);
 		echo "\n$cmd";
-		echo "\nPID: $pid";
+		echo "\nPID: $pid";	
 
 		// Handle Process abort
 		$abort = false;
@@ -60,10 +60,11 @@ if ($res = $mysqli->query($sql)){
 		// 2. Create GRAPHS
 		echo "2. Creating REPORT for $starttime: \n";
 		$dir .= 'log/'.$starttime.'/';
-		$cmd = "cd $dir; ".sntmedia_TSUNG_PERLSTATS;
+		$cmd = 'cd '.$dir.'; '.sntmedia_TSUNG_PERLSTATS;
 		shell_exec($cmd);
 		$tsungUI->updateStatus($row['id'], 'finished');
 	}
+}else{
+	echo "<p>Nope. Didn't like that. ".$mysqli->error."<br />\n".$sql."</p>\n\n";
 }
-
 ?>

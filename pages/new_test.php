@@ -4,9 +4,11 @@ if(!defined('sntmedia_TSUNG_UI')){die();}
 //temporary to be rolled into the "tests" page later
 
 ?>
-<main class="main"> 
-<div class="container">
-	<h2>New test</h2>
+<main> 
+<div class="flash-messages-placeholder container page ">
+	<div class="clearfix">
+		<h2 class="pull-left">New test</h2>
+	</div>
 	<form accept-charset="UTF-8" action="?" method="post">
 	<input name="action" type="hidden" value="new_test" /><input name="_method" type="hidden" value="patch" />
 	<div class="row">
@@ -30,9 +32,7 @@ if(!defined('sntmedia_TSUNG_UI')){die();}
 				<div class="advanced-settings">
 					<a class="add-config-button">Advanced settings</a> 
 					<div class="inner-panel featured hidden">
-						<h4>
-							Advanced settings
-						</h4>
+						<h4>Advanced settings</h4>
 						<div class="row mbm">
 							<div class="form-group string optional error_threshold col-xs-3">
 								<label class="string optional control-label" for="error_threshold">Error (%)</label>
@@ -211,9 +211,15 @@ if(!defined('sntmedia_TSUNG_UI')){die();}
 									<div class="form-group string control-label">
 										<label class="select optional control-label" for="urls_attributes_0_protocol">Protocol</label>
 										<div>
-											<select class="select optional form-control" id="urls_attributes_0_protocol" name="urls_attributes[0][protocol]" value="http">
-												<option selected="selected" value="HTTP">HTTP</option>
-												<option value="HTTPS">HTTPS</option>
+											<select class="select optional form-control" id="urls_attributes_0_protocol" name="urls_attributes[0][protocol]" onchange="setSessionType(this.value)">
+												<option selected="selected" value="ts_http">HTTP(S)</option>
+												<option value="ts_mysql">MySQL</option>
+												<option value="ts_websocket">Websocket</option>
+												<option value="ts_pgsql">PostgresSQL</option>
+												<option value="ts_mqtt">MQTT</option>
+												<option value="ts_amqp">AMQP</option>
+												<option value="ts_jabber">Jabber</option>
+												<option value="ts_ldap">LDAP</option>
 											</select>
 										</div>
 									</div>
@@ -396,7 +402,7 @@ if(!defined('sntmedia_TSUNG_UI')){die();}
 			<div class="col-sm-10">
 				<div class="start-test-block row ">
 					<div class="col-md-2">
-<input class="btn" name="commit" type="submit" value="Save for later" />
+<input class="btn" name="commit" type="submit" value="Save Draft" />
 					</div>
 					<div class="col-md-2">
 					<input class="btn" name="commit" type="submit" value="Schedule" /> 
@@ -404,7 +410,7 @@ if(!defined('sntmedia_TSUNG_UI')){die();}
 					<div class="col-md-4">
 					</div>
 					<div class="col-md-2">
-					<input class="btn-main" name="commit" type="submit" value="Run test" />
+					<input class="btn-main" name="commit" type="submit" value="Run Test" />
 					</div>
 				</div>
 				<div id="schedule" class="panel-block hidden schedule-test-block">
@@ -535,6 +541,29 @@ echo "</pre>";
 */
 
 ?>
+<script>
+function setSessionType(str) {
+    if (str == "") {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+    } else { 
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+            }
+        };
+        xmlhttp.open("GET","getuser.php?q="+str,true);
+        xmlhttp.send();
+    }
+}
+</script>
 
 </body>
 </html>

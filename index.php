@@ -11,6 +11,8 @@ define('sntmedia_TSUNG_UI', true);
 require('config.inc.php');
 $tsungUI = new sntmedia_tsungUI();                                
 
+$testplan_list = $tsungUI->getTestplanList();
+
 if (isset($_POST['testplan']) && ($_POST['testplan']) && isset($_POST['action']) && ($_POST['action']=='run')){
 	$tsungUI->addTestplan($_POST['testplan'],$_POST['comment']);
 }
@@ -21,7 +23,7 @@ if (isset($_GET['action']) && isset($_GET['id']))
 		case 'archive':
 			$tsungUI->archiveReport($_GET['id']);
 		break;
-		case 're-run':
+/*		case 're-run':
 			if (isset($_GET['startdate']) && ($_GET['startdate'])){
 				$plan =  $tsungUI->getTestplanByStartdate($_GET['startdate']);
 				if (isset ($plan['template'])){
@@ -31,9 +33,34 @@ if (isset($_GET['action']) && isset($_GET['id']))
 				$tsungUI->addTestplan($_GET['template'],'A re-run of '.$_GET['template']);
 			}
 		break;
+		*/
 		case 'trash':
 			$tsungUI->deleteReport($_GET['id']);
 		break;
+		
+	}
+}
+
+if (isset($_GET['action']) && isset($_GET['template']))
+{
+	switch($_GET['action']) {
+		//case 'archive':
+		//	$tsungUI->archiveReport($_GET['id']);
+		//break;
+		case 're_run':
+			if (isset($_GET['startdate']) && ($_GET['startdate'])){
+				$plan = $tsungUI->getTestplanByStartdate($_GET['startdate']);
+				if (isset ($plan['template'])){
+					$tsungUI->addTestplan($plan['template'],'A re-run of '.$plan['template'].' at '.$_GET['startdate']);
+				}
+			}elseif(in_array($_GET['template'], $testplan_list)){
+	echo '<p>I here ya.</p>';
+				$tsungUI->addTestplan($_GET['template'],'A re-run of '.$_GET['template']);
+			}
+		break;
+		//case 'trash':
+		//	$tsungUI->deleteReport($_GET['id']);
+		//break;
 		
 	}
 }
@@ -71,7 +98,6 @@ if (isset($_GET['action'])){
 }
 
 
-$testplan_list = $tsungUI->getTestplanList();
 ?>
 <!DOCTYPE html>
 <html>
@@ -79,129 +105,69 @@ $testplan_list = $tsungUI->getTestplanList();
 	<title>TsungUI</title>
 
 <link rel="icon" type="image/png" href="/favico.png" />
-<link rel="stylesheet" href="/jquery-ui-1.11.4.custom/jquery-ui.css">
-<link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" href="/style.css">
-<link rel="stylesheet" href="/synapsys.css">
-<script src="/jquery-ui-1.11.4.custom/external/jquery/jquery.js"></script>
-<script src="/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
-<script src="/assets/bootstrap/js/bootstrap.js"></script>
+
+<link rel="stylesheet" href="assets/jquery-ui/jquery-ui.css">
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="assets/tsungui.css">
+<script src="assets/jquery-ui/external/jquery/jquery.js"></script>
+<script src="assets/jquery-ui/jquery-ui.js"></script>
+<script src="assets/bootstrap/js/bootstrap.js"></script>
+
 <script language="javascript" type="text/javascript">
   function resizeIframe(obj) {
     obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
   }
 </script>
 
-	<style>
-
-		body{
-			background: #fff;
-			padding: 0px;
-			margin: 0px;
-		}
-
-		body, td{
-			font-size: 13px;
-		}
-
-		.page{
-			background: white;
-			padding: 10px;  
-		}
-
-		table thead td{
-			border-bottom: 1px dotted #555;
-		}
-
-		h1{
-			display: Block;
-			background: #3294ff;
-			background-image: url(icon.png);
-			background-position: left top;
-			background-repeat: no-repeat;
-			padding: 20px 0px 40px 150px;
-			margin: 0;
-			color: white;
-			border-bottom: 1px solid #000;
-		}
-
-		ul{
-			list-style: none;
-			margin: 0;
-			padding: 0;
-		}
-
-		ul .title{
-			background: #2466ae;
-			color: white;
-			margin-bottom: 10px;
-			display: block;
-			padding: 3px;
-		}
-
-		ul li{
-			padding-bottom: 8px;
-		}
-
-		ul li span{
-			color: #666;
-			display: block;
-			font-size: 11px;
-		}
-
-		ul li a{
-			text-decoration: none;
-		}
-
-		#navigation{
-			height: 28px;
-			margin-top: -28px;
-			padding-left: 150px;
-			height: 28px;
-			overflow: hidden;
-		}
-
-		#navigation a{
-			float: left;
-			margin-right: 10px;
-			background: #2466ae;
-			padding: 6px 6px;
-			border: 1px solid #000;
-			border-bottom: 0px;
-			text-decoration: none;
-			color: #CCC;
-			font-size: 14px;
-		}
-
-		#navigation a.selected{
-			background: white;
-			color: #555;
-			font-weight: bold;
-		}
-		
-		.new_test {
-			background: #eee;
-			padding: 10px;
-		}
-
-		tr.ro td{
-			background: #ccc;
-		}
-	</style>
 </head>
 <body>
-	<div id="head">
-		<h1>TsungUI</h1>
-		<div id="navigation">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	<a class="navbar-brand" href="#"><img alt="TsungUI" src="assets/icon.png"></a>
+</div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
 			<?php
 			foreach (sntmedia_tsungUI::$CONFIG['pages'] as $id=>$label){
-				$sel = ($tsungUI->current_page == $id) ? 'selected' : '';
-				echo "<a class='$sel' href='?page=$id'>$label</a>";
+				$active = ($tsungUI->current_page == $id) ? 'class=\'active\'' : '';
+				echo ' <li '.$active.'><a href="?page='.$id.'">'.$label.'</a></li>';
 			}
 			?>
-		</div>
-	</div>
+      </ul>
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Client Machines</a></li>
+            <li><a href="#">Monitoring</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
 	<?php
+	//print_r($_POST);
+	//print_r($_GET);
 		include('pages/'.$tsungUI->current_page.'.php');
 	?>
 </body>

@@ -10,8 +10,7 @@
 define('sntmedia_TSUNG_UI', true);
 require('config.inc.php');
 require('tsungUI_xml_class.inc.php');
-$tsungUI = new tsungUI_XML();                                
-
+$tsungUIXML = new tsungUI_XML();                                
 echo '<html>
 <head>
 </head>
@@ -28,7 +27,7 @@ tsung_session
 tsung_statusinfo
 
 */
-echo( $tsungUI->getTsungConfig('2'));
+echo( htmlentities($tsungUIXML->getTsungConfig('2')));
 
 echo '
 </pre>

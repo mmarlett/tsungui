@@ -51,7 +51,7 @@ class sntmedia_tsungUI {
 			$order = 'ASC';
 		}
 		//look in the db for the test plans
-		$query = "SELECT DISTINCT `_name` FROM `tsung_config_templates` ORDER BY `_name` $order";
+		$query = "SELECT DISTINCT `_name` FROM `tsung_tsung` ORDER BY `_name` $order";
 		if ($res = $this->_link->query($query))
 		{
 			while ($row = $res->fetch_array(MYSQLI_ASSOC)){
@@ -109,7 +109,7 @@ class sntmedia_tsungUI {
 			break;
 		}
 	
-		$query = "SELECT count(`id`) AS count FROM `tsung_config_templates` WHERE $where;";
+		$query = "SELECT count(`id`) AS count FROM `tsung_tsung` WHERE $where;";
 		$res = $this->_link->query($query);
 		$row = $res->fetch_array(MYSQLI_ASSOC);
 		return ($row['count']);
@@ -160,7 +160,7 @@ class sntmedia_tsungUI {
 			while ($row = $res->fetch_array(MYSQLI_ASSOC))
 			{
 				$report_list[] = $row;
-				$path = $row['template'].'/log/'.$row['starttime'];
+				$path = $this->escapeName($row['template']).'/log/'.$row['starttime'];
 				if (file_exists(sntmedia_PATH_TEMPLATES.$path.'report.html'))
 				{
 					$row['path'] = $path;
@@ -235,7 +235,7 @@ class sntmedia_tsungUI {
 			while ($row = $res->fetch_array(MYSQLI_ASSOC))
 			{
 					$report_list[] = $row;
-				$path = $row['template'].'/log/'.$row['starttime'];
+				$path = $this->escapeName($row['template']).'/log/'.$row['starttime'];
 				if (file_exists(sntmedia_PATH_TEMPLATES.$path.'report.html'))
 				{
 					$row['path'] = $path;
@@ -261,16 +261,14 @@ class sntmedia_tsungUI {
 	*/
 	public function getTestplanStatusDetails($id){
 		// Get Runtime from DB
-		$query = "SELECT * FROM tsung_statusinfo WHERE id = '{$id}' LIMIT 1";
-
+		$query = "SELECT * FROM `tsung_statusinfo` WHERE `id` = '{$id}' LIMIT 1";
 		$r = '';
-
 		if ($res = $this->_link->query($query))
 		{
 			$row = $res->fetch_array(MYSQLI_ASSOC);
 			if ($row['starttime'])
 			{
-				$dir = dirname(__FILE__).'/templates/'.$row['template'].'/log/'.$row['starttime'].'/';
+				$dir = sntmedia_PATH_TEMPLATES.$this->escapeName($row['template']).'/log/'.$row['starttime'].'/';
 				if (file_exists($dir)){
 					foreach (scandir($dir) as $filename)
 					{
@@ -321,13 +319,15 @@ class sntmedia_tsungUI {
 		if ($templateID){
 			$templateID = $this->_link->real_escape_string($templateID);
 		}else{
-			$query = "SELECT `id`, `timestamp` FROM `tsung_config_templates` WHERE `name` = '$templateName' ORDER BY `timestamp` LIMIT 1";
+			$query = "SELECT `tsung_tsung`.`id`, `tsung_tsung`.`timestamp` FROM `tsung_tsung`, `tsung_statusinfo` WHERE `tsung_statusinfo`.`template` = '$templateName' AND `tsung_statusinfo`.`parent_id` = `tsung_tsung`.`id` ORDER BY `timestamp` LIMIT 1";
 			if ($res = $this->_link->query($query))
 			{
 				$row = $res->fetch_array(MYSQLI_ASSOC);
 				if ($row){
 					$templateID = $row['id'];
 				}
+			}else{
+				echo "<p>Nope. Didn't like that. ".$this->_link->error."<br />\n".$query."</p>\n\n";
 			}
 		}
 		$comment = $this->_link->real_escape_string($comment);
@@ -337,7 +337,10 @@ class sntmedia_tsungUI {
 			`template`='$templateName',
 			`parent_id`='$templateID',
 			`comment`='$comment';";
-		$this->_link->query($query);
+		$res = $this->_link->query($query);
+		if (! $res){
+			echo "<p>Nope. Didn't like that. ".$this->_link->error."<br />\n".$query."</p>\n\n";
+		}
 	}
 	
 	/**
@@ -377,7 +380,7 @@ class sntmedia_tsungUI {
 		}
 
 		// Grep some infos from reports
-		$path = sntmedia_PATH_TEMPLATES.$templateName.'/log/'.$starttime.'/report.html';
+		$path = sntmedia_PATH_TEMPLATES.$this->escapeName($templateName).'/log/'.$starttime.'/report.html';
 		//set these so they won't throw errors later, even if there isn't a report
 		if (file_exists($path))
 		{
@@ -392,7 +395,18 @@ class sntmedia_tsungUI {
 		}
 		return $r;
 	}
-	
+
+	/** 
+	* Take a config name and make it OK for any filesystem
+	* 
+	* @param string $raw Directory name 
+	* @return escaped string 
+	*/ 
+	public function escapeName($raw){
+		$escaped = preg_replace('/[^A-Za-z0-9_\-]/', '_', $raw);
+		return $escaped;
+	}
+
 	/** 
 	* Recursively delete a directory 
 	* 

@@ -39,6 +39,7 @@ switch($action) {
 
 ?>
 <main class="main"> 
+
 <div class="flash-messages-placeholder container page ">
 	<h2 class="mbm">
 		New test
@@ -197,7 +198,7 @@ switch($action) {
 			<div class="endpoint-url-fields col-md-10">
 				<div class="endpoint-url-field form-panel" data-index="0">
 					<div class="panel-controls">
-						<a href="#" class="action-icon move-up disabled" title="Move this request up" data-toggle="tooltip" data-container="body"></a> <a href="#" class="action-icon move-down disabled" title="Move this request down" data-toggle="tooltip" data-container="body"></a> <a href="#" class="action-icon copy" title="Copy target" data-toggle="tooltip" data-container="body"></a> <a href="#" class="remove-url action-icon delete disabled" title="Delete" data-toggle="tooltip" data-container="body"></a> 
+						<a href="#" class="action-icon move-up disabled" title="Move this request up" data-toggle="tooltip" data-container="body"></a> <a href="#" class="action-icon move-down disabled" title="Move this request down" data-toggle="tooltip" data-container="body"></a> <a href="#" class="action-icon copy" title="Copy target" data-toggle="tooltip" data-container="body"></a> <a href="#" class="remove-url action-icon delete disabled" title="Delete" data-toggle="tooltip" onclick="return confirm('Are you sure? No takesy-backsy.');" data-container="body"></a> 
 					</div>
 					<div class="endpoint-url row" id="endpoint_url_0">
 						<div class="col-sm-3">
@@ -563,11 +564,11 @@ foreach ($testplan_list as $template){
 
 ?>
 <main >
-	<div class="page">
-		<div class="clearfix">
-			<h2 class="pull-left">All tests</h2>
-			<a href="?page=tests&amp;action=new" class="pull-right btn-main btn-big"><span class="glyphicon glyphicon-plus"></span> New Test</a>
-		</div>
+<div class="flash-messages-placeholder container page ">
+	<div class="clearfix">
+		<h2 class="pull-left">All tests</h2>
+		<a href="?page=tests&amp;action=new" class="pull-right btn-main btn-big"><span class="glyphicon glyphicon-plus"></span> New Test</a>
+	</div>
   <div class="filter">
     <div class="filter-panel">
       <div class="section"><label>Show:</label>

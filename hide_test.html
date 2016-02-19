@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>div hide test</title>
+<link rel="stylesheet" href="assets/jquery-ui/jquery-ui.css">
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="assets/tsungui.css">
+<script src="assets/jquery-ui/external/jquery/jquery.js"></script>
+<script src="assets/jquery-ui/jquery-ui.js"></script>
+<script src="assets/bootstrap/js/bootstrap.js"></script>
+</head>
+<body>
+<main>
+<div class="advanced-settings">
+<a id="dialog-link" class="add-config-button">Advanced settings</a> 
+<div class="inner-panel featured hidden">
+	<h4>Advanced settings</h4>
+	<div class="row mbm">
+		<div class="form-group string optional error_threshold col-xs-3">
+			<label class="string optional control-label" for="error_threshold">Error (%)</label>
+			<div>
+				<input class="string optional xsmall form-control" id="error_threshold" name="error_threshold" type="text" value="50" />
+			</div>
+		</div>
+		<div class="form-group string optional timeout col-xs-3">
+			<label class="string optional control-label" for="timeout">Timeout</label>
+			<div>
+				<input class="string optional form-control" id="timeout" name="timeout" type="text" value="10" />
+			</div>
+		</div>
+		<div class="form-group select optional timeout_uom pull-left">
+			<div>
+				<select class="select optional small form-control" id="timeout_uom" name="timeout_uom" value="ms">
+					<option selected="selected" value="Sec">Sec</option>
+					<option value="ms">ms</option>
+				</select>
+			</div>
+		</div>
+		<div class="panel-controls">
+			<a href="#" class="action-icon resize" data-toggle="tooltip" data-container="body" title="Resize"></a> 
+		</div>
+	</div>
+	<h4>
+		Basic authentication <a data-toggle="popover" role="button" class="hint-badge" data-placement="right" data-trigger="hover" data-title="Please Note" data-content="We don't encrypt these fields, so please don't use sensitive credentials here!">?</a> 
+	</h4>
+	<div class="row">
+		<div class="form-group string optional user_login col-xs-4">
+			<div>
+				<input autocomplete="off" class="string optional form-control" id="user_login" name="user_login" placeholder="Username" type="text" />
+			</div>
+		</div>
+		<div class="form-group string optional user_password col-xs-4">
+			<div>
+				<input autocomplete="off" class="string optional form-control" id="user_password" name="user_password" placeholder="Password" type="text" />
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</main>
+
+</body>
+</html>

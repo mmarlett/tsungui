@@ -9,40 +9,12 @@ if (! isset ($_GET['starttime'])){
 	$_GET['starttime'] = '';
 }
 $subdir = $_GET['starttime'];
-$path = $tsungUI->path2url(sntmedia_PATH_TEMPLATES.$dir.'/log/'.$subdir.'/report.html');
-$order = 'DESC';// ASC or DESC
-if (isset ($_GET['order']))
-{
-	if (($_GET['order']=='ASC') || ($_GET['order']=='DESC'))
-	{
-		$order = $_GET['order'];
-	}
-}
-
-$type = '';// completed, active, archived
-if (isset ($_GET['type']))
-{
-	if (($_GET['type']=='active') || ($_GET['type']=='archived'))
-	{
-		$type = $_GET['type'];
-	}
-}
-
-$search = '';
-if (isset($_GET['search']))
-{
-	$search = urldecode($_GET['search']);
-}
-
-$search_filter = '';
-if (isset($_GET['search_filter']))
-{
-	$search_filter = urldecode($_GET['search_filter']);
-}
+$path = $tsungUI->path2url(sntmedia_PATH_TEMPLATES.$tsungUI->escapeName($dir).'/log/'.$subdir.'/report.html');
 
 
 if ($subdir && $dir){
 ?>
+<div class="container">
 <div style="font-size: 16px; padding: 5px;">
 	<?php
 		$info = $tsungUI->getTestInfoByPath($dir, $subdir);
@@ -54,10 +26,10 @@ if ($subdir && $dir){
 <div style="position: fixed; top: 135px; left: 0px; right: 0px; bottom: 50px;">
 	<iframe src="<?php echo $path; ?>" style="width: 100%; height: 100%;"></iframe>
 </div>
-
+</div>
 <?php } else { ?>
-  <main >
-    <div class="flash-messages-placeholder page ">
+<main>
+	<div class="flash-messages-placeholder page container">
   <div class="clearfix">
       <h2 class="pull-left">All results</h2>
     <a href="?page=tests&amp;action=new" class="pull-right btn-main btn-big"><span class="glyphicon glyphicon-plus"></span> New Test</a>
@@ -190,7 +162,7 @@ if ($subdir && $dir){
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody id="endpointsList">
+        <tbody >
 
 	
 		<?php
@@ -252,7 +224,7 @@ if ($subdir && $dir){
 					echo $report['id'];
 					if ($order){echo '&amp;order='; echo $order;} 
 					if ($type){echo '&amp;type='; echo $type;}
-					echo '" rel="nofollow" title="Delete"></a></td>';
+					echo '" rel="nofollow" onclick="return confirm(\'Are you sure? No takesy-backsy.\');"  title="Delete"></a></td>';
 				}else{
 					echo '<a class="action-icon archive" data-container="body" data-method="put" data-toggle="tooltip" href="?page=reports&amp;action=archive&amp;id=';
 					echo $report['id'];
@@ -270,6 +242,7 @@ if ($subdir && $dir){
 	</tbody>
 	</table>
 	
+</div>
 </div>
 
 <?php }; ?>
